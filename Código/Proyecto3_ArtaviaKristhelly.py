@@ -38,6 +38,33 @@ class Pais:
             self.continente = continente
         if (ranking_fifa != None):
             self.ranking_fifa = ranking_fifa
+
+"""
+Nombre: class Persona
+Entradas: No hay 
+Salidas: Métodos de constructor y mostrar_datos 
+Restricciones:
+"""
+class Persona():
+    def __init__(self, nombre, apellido,fecha_nacimiento,nacionalidad):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.fecha_nacimiento = fecha_nacimiento
+        self.nacionalidad = nacionalidad
+        
+    """
+    Nombre: mostrar_datos
+    Entradas: No hay 
+    Salidas: Datos de persona, la cual lo heredan Entrenador y Futbolista 
+    Restricciones:
+    """
+    def mostrar_datos(self):
+        return ("Nombre: " + self.nombre + "\n"
+        + "Apellido: " + self.apellido + "\n"
+        + "Fecha de nacimiento: " + self.fecha_nacimiento + "\n"
+        + "Nacionalidad: " + self.nacionalidad)
+
+    
             
             
         
