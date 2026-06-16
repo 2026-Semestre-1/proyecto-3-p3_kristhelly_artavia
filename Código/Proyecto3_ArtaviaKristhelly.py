@@ -21,7 +21,7 @@ class Pais:
         return ("Codigo Oficial FIFA: " + self.codigo_fifa + "\n" 
         + "Nombre: " + self.nombre + "\n" 
         + "Continente: " + self.continente + "\n" 
-        + "Posición en el ranking FIFA: " + str(self.ranking_fifa))
+        + "Posición en el ranking FIFA: " + str(self.ranking_fifa)) #revisar si str esta permitido
     
     """
     Nombre:actualizar_datos  
@@ -63,6 +63,23 @@ class Persona():
         + "Apellido: " + self.apellido + "\n"
         + "Fecha de nacimiento: " + self.fecha_nacimiento + "\n"
         + "Nacionalidad: " + self.nacionalidad)
+
+
+"""
+Nombre: class Entrenador
+Entradas: No hay 
+Salidas: Métodos de constructor, mostrar_datos y actualizar_datos
+Restricciones:
+"""
+class Entrenador(Persona):
+    def __init__(self, nombre, apellido, fecha_nacimiento, nacionalidad,licencia, experiencia_anios, sistema_juego):
+        Persona.__init__(self, nombre, apellido,fecha_nacimiento,nacionalidad)
+
+        self.licencia = licencia
+        self.experiencia_anios = experiencia_anios
+        self.sistema_juego = sistema_juego
+        
+
 
     
             
