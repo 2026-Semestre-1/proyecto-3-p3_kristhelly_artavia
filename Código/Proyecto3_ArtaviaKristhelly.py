@@ -6,6 +6,9 @@ Restricciones:
 """
 class Pais:
     def __init__(self,codigo_fifa,nombre,continente,ranking_fifa):
+
+        #FALTA VALIDACIONES
+        
         self.codigo_fifa = codigo_fifa
         self.nombre = nombre
         self.continente = continente
@@ -29,15 +32,24 @@ class Pais:
     Salidas: Datos actuaizados
     Restricciones:
     """
-    def actualizar_datos(self, codigo_fifa = None, nombre = None, continente = None, ranking_fifa = None):
-        if (codigo_fifa != None):
-            self.codigo_fifa = codigo_fifa
-        if (nombre != None):
-            self.nombre = nombre
-        if (continente != None):
-            self.continente = continente
-        if (ranking_fifa != None):
-            self.ranking_fifa = ranking_fifa
+    def actualizar_datos(self, nuevoCodigo_fifa = None, nuevoNombre = None, nuevoContinente = None, nuevoRanking_fifa = None):
+        if not isinstance(nuevoCodigo_fifa, str):
+            return "El nuevo código FIFA debe ser un texto"
+        if not isinstance(nuevoNombre, str):
+            return "El nuevo nombre debe ser un texto"
+        if not isinstance(nuevoContinente, str):
+            return "La nueva confederación debe ser un texto"
+        if not isinstance(nuevoRanking_fifa, int):
+            return "El nuevo ranking FIFA debe ser un número entero"
+      
+        if (nuevoCodigo_fifa != None):
+            self.codigo_fifa = nuevoCodigo_fifa
+        if (nuevoNombre != None):
+            self.nombre = nuevoNombre
+        if (nuevoContinente != None):
+            self.continente = nuevoContinente
+        if (nuevoRanking_fifa != None):
+            self.ranking_fifa = nuevoRanking_fifa
 
 """
 Nombre: class Persona
@@ -47,6 +59,9 @@ Restricciones:
 """
 class Persona():
     def __init__(self, nombre, apellido,fecha_nacimiento,nacionalidad):
+
+        #FALTA VALIDACIONES
+    
         self.nombre = nombre
         self.apellido = apellido
         self.fecha_nacimiento = fecha_nacimiento
@@ -73,11 +88,16 @@ Restricciones:
 """
 class Entrenador(Persona):
     def __init__(self, nombre, apellido, fecha_nacimiento, nacionalidad,licencia, experiencia_anios, sistema_juego):
+
         Persona.__init__(self, nombre, apellido,fecha_nacimiento,nacionalidad)
 
         self.licencia = licencia
         self.experiencia_anios = experiencia_anios
         self.sistema_juego = sistema_juego
+
+    def mostrar_datos(self):
+        return 
+        
         
 
 
