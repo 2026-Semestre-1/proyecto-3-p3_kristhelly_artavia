@@ -44,22 +44,26 @@ class Pais:
         if (nuevoCodigo_fifa != None):
             if not isinstance(nuevoCodigo_fifa, str):
                 return "El nuevo código FIFA debe ser un texto"
-            self.codigo_fifa = nuevoCodigo_fifa
-            
         if (nuevoNombre != None):   
             if not isinstance(nuevoNombre, str):
                 return "El nuevo nombre debe ser un texto"
-            self.nombre = nuevoNombre
-            
         if (nuevoContinente != None):    
             if not isinstance(nuevoContinente, str):
                 return "La nueva confederación debe ser un texto"
-            self.continente = nuevoContinente
-            
         if (nuevoRanking_fifa != None):    
             if not isinstance(nuevoRanking_fifa, int):
                 return "El nuevo ranking FIFA debe ser un número entero"
-            self.ranking_fifa = nuevoRanking_fifa      
+
+        if (nuevoCodigo_fifa != None):    
+            self.codigo_fifa = nuevoCodigo_fifa
+        if (nuevoNombre != None):
+            self.nombre = nuevoNombre  
+        if (nuevoContinente != None):    
+            self.continente = nuevoContinente
+        if (nuevoRanking_fifa != None):    
+            self.ranking_fifa = nuevoRanking_fifa
+
+        return "La actualizacion se realizo con exito"
 """
 Nombre: class Persona
 Entradas: No hay 
