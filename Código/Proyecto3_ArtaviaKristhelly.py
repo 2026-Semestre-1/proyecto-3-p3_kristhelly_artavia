@@ -22,9 +22,9 @@ class Pais:
     """
     def mostrar_datos(self):
         return ("Codigo Oficial FIFA: " + self.codigo_fifa + "\n" 
-        + "Nombre: " + self.nombre + "\n" 
-        + "Continente: " + self.continente + "\n" 
-        + "Posición en el ranking FIFA: " + str(self.ranking_fifa)) #revisar si str esta permitido
+        + "Nombre: " + self.nombre 
+        + "\nContinente: " + self.continente
+        + "\nPosición en el ranking FIFA: " + str(self.ranking_fifa)) #revisar si str esta permitido
     
     """
     Nombre:actualizar_datos  
@@ -33,24 +33,26 @@ class Pais:
     Restricciones:
     """
     def actualizar_datos(self, nuevoCodigo_fifa = None, nuevoNombre = None, nuevoContinente = None, nuevoRanking_fifa = None):
-        if not isinstance(nuevoCodigo_fifa, str):
-            return "El nuevo código FIFA debe ser un texto"
-        if not isinstance(nuevoNombre, str):
-            return "El nuevo nombre debe ser un texto"
-        if not isinstance(nuevoContinente, str):
-            return "La nueva confederación debe ser un texto"
-        if not isinstance(nuevoRanking_fifa, int):
-            return "El nuevo ranking FIFA debe ser un número entero"
-      
-        if (nuevoCodigo_fifa != None):
-            self.codigo_fifa = nuevoCodigo_fifa
-        if (nuevoNombre != None):
-            self.nombre = nuevoNombre
-        if (nuevoContinente != None):
-            self.continente = nuevoContinente
-        if (nuevoRanking_fifa != None):
-            self.ranking_fifa = nuevoRanking_fifa
 
+        if (nuevoCodigo_fifa != None):
+            if not isinstance(nuevoCodigo_fifa, str):
+                return "El nuevo código FIFA debe ser un texto"
+            self.codigo_fifa = nuevoCodigo_fifa
+            
+        if (nuevoNombre != None):   
+            if not isinstance(nuevoNombre, str):
+                return "El nuevo nombre debe ser un texto"
+            self.nombre = nuevoNombre
+            
+        if (nuevoContinente != None):    
+            if not isinstance(nuevoContinente, str):
+                return "La nueva confederación debe ser un texto"
+            self.continente = nuevoContinente
+            
+        if (nuevoRanking_fifa != None):    
+            if not isinstance(nuevoRanking_fifa, int):
+                return "El nuevo ranking FIFA debe ser un número entero"
+            self.ranking_fifa = nuevoRanking_fifa      
 """
 Nombre: class Persona
 Entradas: No hay 
@@ -74,10 +76,10 @@ class Persona():
     Restricciones:
     """
     def mostrar_datos(self):
-        return ("Nombre: " + self.nombre + "\n"
-        + "Apellido: " + self.apellido + "\n"
-        + "Fecha de nacimiento: " + self.fecha_nacimiento + "\n"
-        + "Nacionalidad: " + self.nacionalidad)
+        return ("Nombre: " + self.nombre
+        + "\nApellido: " + self.apellido
+        + "\nFecha de nacimiento: " + self.fecha_nacimiento
+        + "\nNacionalidad: " + self.nacionalidad)
 
 
 """
@@ -89,6 +91,7 @@ Restricciones:
 class Entrenador(Persona):
     def __init__(self, nombre, apellido, fecha_nacimiento, nacionalidad,licencia, experiencia_anios, sistema_juego):
 
+        #Faltan validaciones
         Persona.__init__(self, nombre, apellido,fecha_nacimiento,nacionalidad)
 
         self.licencia = licencia
@@ -96,8 +99,10 @@ class Entrenador(Persona):
         self.sistema_juego = sistema_juego
 
     def mostrar_datos(self):
-        return 
-        
+        return (Persona.mostrar_datos(self) + "\nLicencia: " + self.licencia
+                + "\nAños de experiencia como entrenador: " + str(self.experiencia_anios)#revisar si str esta permitido de esta forma
+                + "\nSistema táctico preferido:" + self.sistema_juego) 
+
         
 
 
