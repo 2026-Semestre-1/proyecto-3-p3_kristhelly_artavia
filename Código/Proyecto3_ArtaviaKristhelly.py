@@ -21,10 +21,10 @@ class Pais:
     Restricciones:
     """
     def mostrar_datos(self):
-        return ("Codigo Oficial FIFA: " + self.codigo_fifa + "\n" 
-        + "Nombre: " + self.nombre 
-        + "\nContinente: " + self.continente
-        + "\nPosición en el ranking FIFA: " + str(self.ranking_fifa)) #revisar si str esta permitido
+        return (f"Codigo Oficial FIFA: {self.codigo_fifa}\n"
+            f"Nombre: {self.nombre}\n"
+            f"Continente: {self.continente}\n"
+            f"Posición en el ranking FIFA: {self.ranking_fifa}")
     
     """
     Nombre:actualizar_datos  
@@ -76,10 +76,10 @@ class Persona():
     Restricciones:
     """
     def mostrar_datos(self):
-        return ("Nombre: " + self.nombre
-        + "\nApellido: " + self.apellido
-        + "\nFecha de nacimiento: " + self.fecha_nacimiento
-        + "\nNacionalidad: " + self.nacionalidad)
+        return (f"Nombre: {self.nombre}\n"
+        f"Apellido: {self.apellido}\n"
+        f"Fecha de nacimiento: {self.fecha_nacimiento}\n"
+        f"Nacionalidad: {self.nacionalidad}")
 
 
 """
@@ -99,9 +99,10 @@ class Entrenador(Persona):
         self.sistema_juego = sistema_juego
 
     def mostrar_datos(self):
-        return (Persona.mostrar_datos(self) + "\nLicencia: " + self.licencia
-                + "\nAños de experiencia como entrenador: " + str(self.experiencia_anios)#revisar si str esta permitido de esta forma
-                + "\nSistema táctico preferido:" + self.sistema_juego) 
+        return (Persona.mostrar_datos(self)
+                + f"\nLicencia: {self.licencia}"
+                + f"\nAños de experiencia como entrenador: {self.experiencia_anios}"
+                + f"\nSistema táctico preferido: {self.sistema_juego}") 
 
         
 
