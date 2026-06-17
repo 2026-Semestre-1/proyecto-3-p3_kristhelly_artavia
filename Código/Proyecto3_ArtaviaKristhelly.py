@@ -41,26 +41,26 @@ class Pais:
     """
     def actualizar_datos(self, nuevoCodigo_fifa = None, nuevoNombre = None, nuevoContinente = None, nuevoRanking_fifa = None):
 
-        if (nuevoCodigo_fifa != None):
+        if(nuevoCodigo_fifa != None):
             if not isinstance(nuevoCodigo_fifa, str):
                 return "El nuevo código FIFA debe ser un texto"
-        if (nuevoNombre != None):   
+        if(nuevoNombre != None):   
             if not isinstance(nuevoNombre, str):
                 return "El nuevo nombre debe ser un texto"
-        if (nuevoContinente != None):    
+        if(nuevoContinente != None):    
             if not isinstance(nuevoContinente, str):
                 return "La nueva confederación debe ser un texto"
-        if (nuevoRanking_fifa != None):    
+        if(nuevoRanking_fifa != None):    
             if not isinstance(nuevoRanking_fifa, int):
                 return "El nuevo ranking FIFA debe ser un número entero"
 
-        if (nuevoCodigo_fifa != None):    
+        if(nuevoCodigo_fifa != None):    
             self.codigo_fifa = nuevoCodigo_fifa
-        if (nuevoNombre != None):
+        if(nuevoNombre != None):
             self.nombre = nuevoNombre  
-        if (nuevoContinente != None):    
+        if(nuevoContinente != None):    
             self.continente = nuevoContinente
-        if (nuevoRanking_fifa != None):    
+        if(nuevoRanking_fifa != None):    
             self.ranking_fifa = nuevoRanking_fifa
 
         return "La actualizacion se realizo con exito"
@@ -133,46 +133,86 @@ class Entrenador(Persona):
                 + f"\nAños de experiencia como entrenador: {self.experiencia_anios}"
                 + f"\nSistema táctico preferido: {self.sistema_juego}")
 
+    """
+    Nombre: actualizar_datos
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def actualizar_datos(self, nuevoNombre = None, nuevoApellido = None, nuevaFecha_nacimiento = None, nuevaNacionalidad = None,nuevaLicencia = None,nuevaExperiencia_anios = None, nuevoSistema_juego = None):
-       if (nuevoNombre != None):
+        if(nuevoNombre != None):
             if not isinstance(nuevoNombre, str):
                 return "El nuevo nombre debe ser un texto"
-        if (nuevoApellido != None):   
+        if(nuevoApellido != None):   
             if not isinstance(nuevoApellido, str):
                 return "El nuevo apellido debe ser un texto"
         if (nuevaFecha_nacimiento != None):    
             if not isinstance(nuevaFecha_nacimiento, str):
                 return "La nueva fecha de nacimiento debe ser un texto en formato DD/MM/AAAA"
-        if (nuevaNacionalidad != None):    
+        if(nuevaNacionalidad != None):    
             if not isinstance(nuevaNacionalidad, str):
                 return "La nueva nacionalidad debe ser un texto"
-        if (nuevaLicencia != None):
+        if(nuevaLicencia != None):
             if not isinstance (nuevaLicencia, str):
                 return "Error: La nueva licencia debe ser un texto"
-        if (nuevaExperiencia_anios != None):
+        if(nuevaExperiencia_anios != None):
             if not isinstance (nuevaExperiencia_anios, int):
                 return "Error: Los nuevos años de experiencia deben ser un número entero"
         if(nuevoSistema_juego != None):
             if not isinstance(nuevoSistema_juego,str):
                 return "Error: El nuevo sistema táctico preferido debe ser un texto"
 
-        if (nuevoNombre != None):
+        if(nuevoNombre != None):
             self.nombre = nuevoNombre
-        if (nuevoApellido != None):
+        if(nuevoApellido != None):
             self.apellido = nuevoApellido
-        if (nuevaFecha_nacimiento != None):
+        if(nuevaFecha_nacimiento != None):
             self.fecha_nacimiento = nuevaFecha_nacimiento
-        if (nuevaNacionalidad != None):
+        if(nuevaNacionalidad != None):
             self.nacionalidad = nuevaNacionalidad
-        if (nuevaLicencia != None):
+        if(nuevaLicencia != None):
             self.licencia = nuevaLicencia
-        if (nuevaExperiencia_anios != None):
+        if(nuevaExperiencia_anios != None):
             self.experiencia_anios = nuevaExperiencia_anios
         if(nuevoSistema_juego != None):
             self.sistema_juego = nuevoSistema_juego
         
         
-        return "La actualización se realizó con éxito" 
+        return "La actualización se realizó con éxito"
+
+class Futbolista(Persona):
+    def __init__(self, dorsal, posicion, total_tarjetas_amarillas, total_tarjetas_rojas, goles, asistencias, puntaje_individual):
+
+        if not isinstance(dorsal,int):
+            raise TypeError("Error: El dorsal debe ser un número entero")
+        if not isinstance(posicion, str):
+            raise TypeError("Error: La posición del jugador debe ser un texto")
+        if not isinstance(total_tarjetas_amarillas, int):
+            raise TypeError("Error: Las tarjetas amarillas deben ser un número entero")
+        if not isinstance(total_tarjetas_rojas,int):
+            raise TypeError("Error: Las tarjetas rojas deben ser un número entero")
+        if not isinstance(goles,int):
+            raise TypeError("Error: Los goles anotados deben ser un número entero")
+        if not isinstance(asistencias,int):
+            raise TypeError("Error:La asistencias deben ser un número entero")
+        if not isinstance(asistencias,int):
+            raise TypeError("Error:Las asistencias deben ser un número entero")
+        if not isinstance(puntaje_individual;int):
+            raise TypeError("Error:El puntaje individual debe ser un número entero")
+        
+        Persona.__init__(self, nombre, apellido,fecha_nacimiento,nacionalidad)
+        self.dorsal = dorsal
+        self.posicion = posicion
+        self.total_tarjetas_amarillas = total_tarjetas_amarillas
+        self.total_tarjetas_rojas = total_tarjetas_rojas
+        self.goles = goles
+        self.asistencias = asistencias
+        self.puntaje_individual = puntaje_individual
+        
+        
+
+    
+    
 
         
 
