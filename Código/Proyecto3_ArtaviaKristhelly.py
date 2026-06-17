@@ -7,7 +7,14 @@ Restricciones:
 class Pais:
     def __init__(self,codigo_fifa,nombre,continente,ranking_fifa):
 
-        #FALTA VALIDACIONES
+        if not isinstance(codigo_fifa,str):
+            raise TypeError ("Error: El codigo FIFA debe ser un texto")
+        if not isinstance(nombre,str):
+            raise TypeError ("Error: El nombre del pais debe ser un texto")
+        if not isinstance(continente,str):
+            raise TypeError ("Error: La confederación a la que pertenece debe ser un texto")
+        if not isinstance(ranking_fifa,int):
+            raise TypeError ("Error: La posición en el ranking debe ser un número entero")
         
         self.codigo_fifa = codigo_fifa
         self.nombre = nombre
@@ -62,7 +69,14 @@ Restricciones:
 class Persona():
     def __init__(self, nombre, apellido,fecha_nacimiento,nacionalidad):
 
-        #FALTA VALIDACIONES
+        if not isinstance (nombre,str):
+            raise TypeError("Error: El nombre debe ser un texto")
+        if not isinstance (apellido,str):
+            raise TypeError ("Error: El apellido debe ser un texto")
+        if not isinstance (fecha_nacimiento, str):
+            raise TypeError ("Error:  La fecha de nacimiento debe ser un texto en formatto DD/MM/AAAA")
+        if not isinstance (nacionalidad,str):
+            raise TypeError("Error: La nacionalidad debe ser un texto")
     
         self.nombre = nombre
         self.apellido = apellido
@@ -90,14 +104,25 @@ Restricciones:
 """
 class Entrenador(Persona):
     def __init__(self, nombre, apellido, fecha_nacimiento, nacionalidad,licencia, experiencia_anios, sistema_juego):
-
-        #Faltan validaciones
+        if not isinstance(licencia,str):
+            raise TypeError ("Error:La licencia debe ser un texto")
+        if not isinstance(experiencia_anios, int):
+            raise TypeError ("Error: Los años de experiencia debe ser un número entero")
+        if not isinstance(sistema_juego, str):
+            raise TypeError ("Error: El sistema táctico preferido debe ser un texto")
+        
         Persona.__init__(self, nombre, apellido,fecha_nacimiento,nacionalidad)
 
         self.licencia = licencia
         self.experiencia_anios = experiencia_anios
         self.sistema_juego = sistema_juego
 
+    """
+    Nombre: mostrar_datos
+    Entradas: No hay 
+    Salidas:  
+    Restricciones:
+    """
     def mostrar_datos(self):
         return (Persona.mostrar_datos(self)
                 + f"\nLicencia: {self.licencia}"
