@@ -319,6 +319,19 @@ class Seleccion():
         self.total_tarjetas_amarillas = 0
         self.total_tarjetas_rojas = 0
         self.fuerza_equipo = 0
+
+    def mostrar_datos(self):
+        return (f"\nEl codigo de la selección es: {self.codigo_equipo}"
+            f"\nEl país de la selección es: {self.pais.mostrar_datos()}"
+            f"\nEl entrenador de la selección es: {self.entrenador}"
+            f"\nLos jugadores de la selección son: {self.jugadores}"
+            f"\nEl total de goles a favor son: {self.total_goles_favor}"
+            f"\nEl total de goles en contra son: {self.total_goles_contra}"
+            f"\nEl total de tarjetas amarillas son: {self.total_tarjetas_amarillas}"
+            f"\nEl total de tarjetas rojas son: {self.total_tarjetas_rojas}"
+            f"\nLa fuerza del equipo es: {self.fuerza_equipo}")
+
+        
             
 
             
