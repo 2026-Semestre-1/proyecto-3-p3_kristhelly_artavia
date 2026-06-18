@@ -303,5 +303,25 @@ class Futbolista(Persona):
 
         return "Tipo de tarjeta no valido"
 
+class Seleccion():
+    def __init__(self,codigo_equipo, pais ):
+        if not isinstance (codigo_equipo,str):
+            raise TypeError("Error: El codigo del equipo debe ser un texto")
+        if not isinstance (pais,Pais):
+            raise TypeError ("Error: El pais debe ser un objeto asociado a la clase Pais")
+            
+        self.codigo_equipo = codigo_equipo
+        self.pais = pais
+        self.entrenador = None #un entrenador asignado
+        self.jugadores = []
+        self.total_goles_favor = 0
+        self.total_goles_contra = 0
+        self.total_tarjetas_amarillas = 0
+        self.total_tarjetas_rojas = 0
+        self.fuerza_equipo = 0
+            
+
+            
+
     
             
