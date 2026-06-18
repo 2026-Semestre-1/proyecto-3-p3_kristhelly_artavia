@@ -286,14 +286,22 @@ class Futbolista(Persona):
 
     def registrar_gol(self):
         self.goles += 1
+        return "Se registro un gol"
 
     def registrar_asistencia(self):
         self.asistencias += 1
+        return "Se registro una asistencia"
 
     def registrar_tarjeta(self, tipo):
         if tipo == "tarjeta amarilla":
             self.total_tarjetas_amarillas += 1
+            return "Se registro una tarjeta amarilla"
 
         if tipo == "tarjeta roja":
             self.total_tarjetas_rojas += 1
+            return "Se registro una tarjeta roja"
+
+        return "Tipo de tarjeta no valido"
+
+    
             
