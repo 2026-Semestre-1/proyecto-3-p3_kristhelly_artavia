@@ -281,24 +281,19 @@ class Futbolista(Persona):
             self.asistencias = nuevas_asistencias
         if(nuevo_puntaje_individual != None):
             self.puntaje_individual = nuevo_puntaje_individual
-            
-        
         
         return "La actualización se realizó con éxito"
-    
-    
-        
-        
 
-    
-    
+    def registrar_gol(self):
+        self.goles += 1
 
-        
+    def registrar_asistencia(self):
+        self.asistencias += 1
 
+    def registrar_tarjeta(self, tipo):
+        if tipo == "tarjeta amarilla":
+            self.total_tarjetas_amarillas += 1
 
-    
+        if tipo == "tarjeta roja":
+            self.total_tarjetas_rojas += 1
             
-            
-        
-        
-        
