@@ -208,6 +208,22 @@ class Futbolista(Persona):
         self.goles = goles
         self.asistencias = asistencias
         self.puntaje_individual = puntaje_individual
+
+    """
+    Nombre: mostrar_datos
+    Entradas: No hay 
+    Salidas:  
+    Restricciones:
+    """
+    def mostrar_datos(self):
+        return (Persona.mostrar_datos(self)
+                + f"\nDorsal:{self.dorsal}"
+                + f"\nPosición:{self.posicion}"
+                + f"\nTotal de tarjetas amarillas:{self.total_tarjetas_amarillas}"
+                + f"\nTotal de tarjetas rojas:{self.total_tarjetas_rojas}"
+                + f"\nGoles: {self.goles}"
+                + f"\nAsistencias:{self.asistencias}
+                + f"\nPuntaje: {self.puntaje_individual}")
         
         
 
