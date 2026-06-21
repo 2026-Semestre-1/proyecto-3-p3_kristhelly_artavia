@@ -330,8 +330,17 @@ class Seleccion():
             f"\nEl total de tarjetas amarillas son: {self.total_tarjetas_amarillas}"
             f"\nEl total de tarjetas rojas son: {self.total_tarjetas_rojas}"
             f"\nLa fuerza del equipo es: {self.fuerza_equipo}")
+    
 
-        
+    def contar_jugadores(self):
+        contador = 0
+
+        for jugador in self.jugadores:
+            contador += 1
+
+        return contador
+
+    def agregar_jugador(self, Futbolista):
             
 
             
