@@ -341,6 +341,15 @@ class Seleccion():
         return contador
 
     def agregar_jugador(self, Futbolista):
+        if not isinstance(futbolista, Futbolista):
+            return "Error: Debe agregar un objeto de la clase Futbolista"
+
+        if self.contar_jugadores() >= 23:
+            return "Error: No se puede agregar más jugadores ya tiene 23 jugadores"
+
+        self.jugadores = self.jugadores + [futbolista]
+
+        return "Jugador agregado con éxito"
             
 
             
