@@ -347,9 +347,17 @@ class Seleccion():
         if self.contar_jugadores() >= 23:
             return "Error: No se puede agregar más jugadores ya tiene 23 jugadores"
 
-        self.jugadores = self.jugadores + [futbolista]
+        self.jugadores += [futbolista]
 
         return "Jugador agregado con éxito"
+
+    def eliminar_jugador(self, dorsal):
+        if not isinstance (dorsal, int):
+            return "Error: El dorsal debe ser un entero"
+        
+        
+
+    
             
 
             
