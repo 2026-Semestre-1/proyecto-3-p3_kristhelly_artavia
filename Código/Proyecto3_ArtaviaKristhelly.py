@@ -354,7 +354,25 @@ class Seleccion():
     def eliminar_jugador(self, dorsal):
         if not isinstance (dorsal, int):
             return "Error: El dorsal debe ser un entero"
-        
+
+        lista_nueva = []
+        encontrar = False
+
+        for jugador in self.jugadores:
+            if jugador.dorsal == dorsal:
+                encontrar = True
+            else:
+                lista_nueva += [jugador]
+
+
+        if encontrar == False:
+            return "Error: No se encontro un jugador con ese dorsal"
+
+        self.jugadores = lista_nueva
+
+        return "Jugador eliminado"
+            
+                
         
 
     
