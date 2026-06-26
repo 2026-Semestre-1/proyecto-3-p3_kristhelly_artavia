@@ -366,11 +366,25 @@ class Seleccion():
 
 
         if encontrar == False:
-            return "Error: No se encontro un jugador con ese dorsal"
+            return "Error: No se encontró un jugador con ese dorsal"
 
         self.jugadores = lista_nueva
 
         return "Jugador eliminado"
+
+    def asignar_entrenador(self, entrenador):
+        if not isinstance(entrenador, Entrenador):
+            return "Error: Debe agregar un objeto de la clase Entrenador"
+
+        self.entrenador = entrenador
+
+        return "Entrenador asignado"
+            
+        
+        
+        
+
+    
             
                 
         
