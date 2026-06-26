@@ -374,12 +374,31 @@ class Seleccion():
 
     def asignar_entrenador(self, entrenador):
         if not isinstance(entrenador, Entrenador):
-            return "Error: Debe agregar un objeto de la clase Entrenador"
+            return "Error: Debe ser un objeto de la clase Entrenador"
 
         self.entrenador = entrenador
 
         return "Entrenador asignado"
-            
+
+    def registrar_resultado(self, goles_favor,goles_contra,tarjetas_am, tarjetas_roj):
+        if not isinstance (goles_favor, int):
+            return "Goles a favor deben ser un entero"
+        if not isinstance (goles_contra,int):
+            return "Goles en contra debe ser un entero"
+        if not isinstance (tarjetas_am, int):
+            return "Tarjetas amarillas debe ser un entero"
+        if not isinstance (tarjetas_roj,int):
+            return "Tarjetas rojas debe ser un entero"
+
+        self.total_goles_favor += goles_favor
+        self.total_goles_contra += goles_contra
+        self.total_tarjetas_amarillas += tarjetas_am
+        self.total_tarjetas_rojas += tarjetas_roj
+
+        return "Se actualizaron los totales del equipo"
+    
+
+        
         
         
         
