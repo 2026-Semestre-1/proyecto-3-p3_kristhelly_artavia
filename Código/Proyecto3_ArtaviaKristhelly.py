@@ -405,8 +405,10 @@ class Seleccion():
         if self.contar_jugadores() < 11:
             return "Debe haber al menos 11 jugadores"
 
-        fuerza_equipo = (promedio_jugadores() * 0.6) + (factor_entrenador() * 0.25) + (factor_ranking() * 0.15)
+        self.fuerza_equipo = (self.promedio_jugadores() * 0.6) + (self.factor_entrenador() * 0.25) + (self.factor_ranking() * 0.15)
 
+        return self.fuerza_equipo
+        
     def promedio_jugadores(self):
         mejores_jugadores = []
         futbolistas = self.jugadores
@@ -453,36 +455,3 @@ class Seleccion():
         factor = 100 - self.pais.ranking_fifa
 
         return factor
-    
-
-
-
-    
-
-        
-                
-                
-        
-
-        
-        
-        
-    
-
-        
-        
-        
-        
-
-    
-            
-                
-        
-
-    
-            
-
-            
-
-    
-            
