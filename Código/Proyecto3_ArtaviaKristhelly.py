@@ -197,6 +197,8 @@ class Futbolista(Persona):
             raise TypeError("Error:La asistencias deben ser un número entero")
         if not isinstance(puntaje_individual,int):
             raise TypeError("Error:El puntaje individual debe ser un número entero")
+        if puntaje_individual > 100 or puntaje_individual < 1:
+            raise TypeError("Error: El puntaje individual del futbolista debe estar en el rango de 1-100")
         
         Persona.__init__(self, nombre, apellido,fecha_nacimiento,nacionalidad)
         self.dorsal = dorsal
@@ -396,6 +398,38 @@ class Seleccion():
         self.total_tarjetas_rojas += tarjetas_roj
 
         return "Se actualizaron los totales del equipo"
+
+    def calcular_fuerza_equipo(self):
+        if self.entrenador == None:
+            return "Se debe asignar un entrenador"
+        if self.contar_jugadores() < 11:
+            return "Debe haber al menos 11 jugadores"
+
+        fuerza_equipo = (promedio_jugadores() * 0.6) + (factor_entrenador() * 0.25) + (factor_ranking() * 0.15)
+
+    def promedio_jugadores(self):
+    mejores_jugadores = []
+    futbolistas = self.jugadores
+    contador = 0
+
+    while contador < 11:
+        mejor_jugador = None
+
+        for jugador in futbolistas:
+            if mejor_jugador == None:
+                mejor_jugador = jugador
+            elif jugador.puntaje_individual > mejor_jugador.puntaje_individual:
+                mejor_jugador = jugador
+
+        # aquí, fuera del for, ya encontraste al mejor
+        # ahora lo agregas a mejores_jugadores
+        # luego creas lista_nueva sin ese mejor_jugador
+        # luego contador += 1
+                    
+
+        
+        
+        
     
 
         
