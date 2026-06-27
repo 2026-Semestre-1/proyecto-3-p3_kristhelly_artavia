@@ -441,13 +441,19 @@ class Seleccion():
 
         return promedio
 
-    def factor_entrenador():
+    def factor_entrenador(self):
        factor = self.entrenador.experiencia_anios * 4
 
        if factor > 100:
            return 100
 
+       return factor
+
+    def factor_ranking(self):
+        factor = 100 - self.pais.ranking_fifa
+
         return factor
+    
 
 
 
