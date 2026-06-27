@@ -1,3 +1,5 @@
+import random
+
 """
 Nombre: class Pais
 Entradas: No hay 
@@ -477,6 +479,18 @@ class Partido:
         self.goles_equipo2 = 0
         self.fase = fase
         self.fecha = fecha
+
+    def simular(self):
+
+        #diferencia de fuerza
+        fuerza_equipo1 = self.equipo_1.calcular_fuerza_equipo()
+
+        fuerza_equipo2 = self.equipo_2.calcular_fuerza_equipo()
+
+        diferencia = fuerza_equipo1 - fuerza_equipo2
+
+        
+        
         
 
 
