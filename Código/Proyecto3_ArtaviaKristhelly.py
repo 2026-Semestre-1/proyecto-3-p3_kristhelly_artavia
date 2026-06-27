@@ -489,6 +489,30 @@ class Partido:
 
         diferencia = fuerza_equipo1 - fuerza_equipo2
 
+        if diferencia > 30:
+            self.goles_equipo1 = random.randint(2,7)
+            self.goles_equipo2 = random.randint(0,3)
+            
+        elif diferencia > 15:
+            self.goles_equipo1 = random.randint(1,5)
+            self.goles_equipo2 = random.randint(0,4)
+
+        elif diferencia < -30:
+            self.goles_equipo1 = random.randint(0,3)
+            self.goles_equipo2 = random.randint(2,7)
+
+        elif diferencia < -15:
+            self.goles_equipo1 = random.randint(0,4)
+            self.goles_equipo2 = random.randint(1,5)
+
+        else:
+            self.goles_equipo1 = random.randint(0,4)
+            self.goles_equipo2 = random.randint(0,4)
+            
+            
+
+        
+
         
         
         
