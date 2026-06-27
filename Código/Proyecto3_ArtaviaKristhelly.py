@@ -528,6 +528,25 @@ class Grupo():
         self.nombre_grupo = nombre_grupo
         self.equipos = []
         self.partidos = []
+
+    def contar_equipos(self):
+        contador = 0
+
+        for equipo in self.equipos:
+            contador += 1
+
+        return contador
+
+    def agregar_equipo(self, seleccion):
+        if not isinstance(seleccion, Seleccion):
+            return "Error: Debe agregar un objeto de la clase Seleccion"
+
+        if self.contar_equipos() >= 4:
+            return "Error: No se puede agregar más equipos el grupo ya tiene 4"
+
+        self.equipos += [seleccion]
+
+        return "Equipo agregado"
         
 
             
