@@ -516,6 +516,9 @@ class Partido:
             return self.equipo_2
         if self.goles_equipo1 == self.goles_equipo2:
             return None
+
+    def mostrar_resultado(self):
+        return f"{self.equipo_1.pais.nombre} {self.goles_equipo1} - {self.goles_equipo2} {self.equipo_2.pais.nombre}"
         
             
             
