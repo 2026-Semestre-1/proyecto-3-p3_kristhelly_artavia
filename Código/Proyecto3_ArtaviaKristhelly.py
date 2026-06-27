@@ -342,7 +342,7 @@ class Seleccion():
 
         return contador
 
-    def agregar_jugador(self, Futbolista):
+    def agregar_jugador(self, futbolista):
         if not isinstance(futbolista, Futbolista):
             return "Error: Debe agregar un objeto de la clase Futbolista"
 
@@ -455,3 +455,37 @@ class Seleccion():
         factor = 100 - self.pais.ranking_fifa
 
         return factor
+
+class Partido:
+
+    def __init__(self, id_partido, equipo_1, equipo_2, fase, fecha):
+        if not isinstance(id_partido, int):
+            raise TypeError("Error: El ID del partido debe ser un número entero")
+        if not isinstance (equipo_1, Seleccion):
+            raise TypeError("Error: El equipo 1 debe ser de tipo Selección")
+        if not isinstance(equipo_2, Seleccion):
+            raise TypeError("Error: El equipo 2 debe ser de tipo Selección")
+        if not isinstance(fase, str):
+            raise TypeError("Error: La fase del torneo a la que pertenece el partido debe ser un texto")
+        if not isinstance(fecha, str):
+            raise TypeError("Error: La fecha del partido debe ser en formato DD/MM/AAAA")
+
+        self.id_partido = id_partido
+        self.equipo_1 = equipo_1
+        self.equipo_2 = equipo_2
+        self.goles_equipo1 = 0
+        self.goles_equipo2 = 0
+        self.fase = fase
+        self.fecha = fecha
+        
+
+
+
+
+
+
+
+
+
+
+    
