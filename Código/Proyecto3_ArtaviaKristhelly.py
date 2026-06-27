@@ -508,6 +508,15 @@ class Partido:
         else:
             self.goles_equipo1 = random.randint(0,4)
             self.goles_equipo2 = random.randint(0,4)
+
+    def generar_ganador(self):
+        if self.goles_equipo1 > self.goles_equipo2:
+            return self.equipo_1
+        if self.goles_equipo2 > self.goles_equipo1:
+            return self.equipo_2
+        if self.goles_equipo1 == self.goles_equipo2:
+            return None
+        
             
             
 
