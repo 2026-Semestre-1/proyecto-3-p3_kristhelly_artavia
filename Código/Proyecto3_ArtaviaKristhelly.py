@@ -408,38 +408,51 @@ class Seleccion():
         fuerza_equipo = (promedio_jugadores() * 0.6) + (factor_entrenador() * 0.25) + (factor_ranking() * 0.15)
 
     def promedio_jugadores(self):
-    mejores_jugadores = []
-    futbolistas = self.jugadores
-    contador = 0
+        mejores_jugadores = []
+        futbolistas = self.jugadores
+        contador = 0
 
-    while contador < 11:
-        mejor_jugador = None
+        while contador < 11:
+            mejor_jugador = None
 
-        for jugador in futbolistas:
-            if mejor_jugador == None:
-                mejor_jugador = jugador
-            elif jugador.puntaje_individual > mejor_jugador.puntaje_individual:
-                mejor_jugador = jugador
+            for jugador in futbolistas:
+                if mejor_jugador == None:
+                    mejor_jugador = jugador
+                elif jugador.puntaje_individual > mejor_jugador.puntaje_individual:
+                    mejor_jugador = jugador
 
-        mejores_jugadores += [mejor_jugador]
+            mejores_jugadores += [mejor_jugador]
 
-        lista_nueva = []
+            lista_nueva = []
 
-        for jugador in futbolistas:
-            if not jugador == mejor_jugador:
-                lista_nueva += [jugador]
-        futbolistas = lista_nueva
-        contador += 1
+            for jugador in futbolistas:
+                if not jugador == mejor_jugador:
+                    lista_nueva += [jugador]
+            futbolistas = lista_nueva
+            contador += 1
 
 
-    suma_puntajes = 0
+        suma_puntajes = 0
 
-    for jugador in mejores_jugadores:
-        suma_puntajes += jugador.puntaje_individual
+        for jugador in mejores_jugadores:
+            suma_puntajes += jugador.puntaje_individual
 
-    promedio = suma_puntajes / 11
+        promedio = suma_puntajes / 11
 
-    return promedio
+        return promedio
+
+    def factor_entrenador():
+       factor = self.entrenador.experiencia_anios * 4
+
+       if factor > 100:
+           return 100
+
+        return factor
+
+
+
+    
+
         
                 
                 
