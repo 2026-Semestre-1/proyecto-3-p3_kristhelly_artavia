@@ -421,11 +421,29 @@ class Seleccion():
             elif jugador.puntaje_individual > mejor_jugador.puntaje_individual:
                 mejor_jugador = jugador
 
-        # aquí, fuera del for, ya encontraste al mejor
-        # ahora lo agregas a mejores_jugadores
-        # luego creas lista_nueva sin ese mejor_jugador
-        # luego contador += 1
-                    
+        mejores_jugadores += [mejor_jugador]
+
+        lista_nueva = []
+
+        for jugador in futbolistas:
+            if not jugador == mejor_jugador:
+                lista_nueva += [jugador]
+        futbolistas = lista_nueva
+        contador += 1
+
+
+    suma_puntajes = 0
+
+    for jugador in mejores_jugadores:
+        suma_puntajes += jugador.puntaje_individual
+
+    promedio = suma_puntajes / 11
+
+    return promedio
+        
+                
+                
+        
 
         
         
