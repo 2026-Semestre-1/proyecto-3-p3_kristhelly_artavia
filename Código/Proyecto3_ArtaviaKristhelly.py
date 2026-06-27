@@ -519,7 +519,17 @@ class Partido:
 
     def mostrar_resultado(self):
         return f"{self.equipo_1.pais.nombre} {self.goles_equipo1} - {self.goles_equipo2} {self.equipo_2.pais.nombre}"
+
+class Grupo():
+    def __init__(self, nombre_grupo):
+        if not isinstance(nombre_grupo, str):
+            raise TypeError("Error: El identificador del grupo debe ser un texto")
         
+        self.nombre_grupo = nombre_grupo
+        self.equipos = []
+        self.partidos = []
+        
+
             
             
 
