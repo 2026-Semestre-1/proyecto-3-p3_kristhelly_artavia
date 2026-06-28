@@ -710,6 +710,8 @@ class Grupo():
 
             i += 1
 
+        return "Partidos jugados"
+
     """
     Nombre: 
     Entradas:  
