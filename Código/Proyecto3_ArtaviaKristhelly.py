@@ -748,7 +748,45 @@ class Grupo():
             diferencia = goles_favor - goles_contra
             tabla += [[equipo,puntos,goles_favor,goles_contra,diferencia]]
 
-        return tabla
+        tabla_ordenada = []
+        contador = 0
+
+        while contador < self.contar_equipos():
+            mejor_fila = None
+
+            for fila in tabla:
+                if mejor_fila == None:
+                    mejor_fila = fila
+                elif fila[1] > mejor_fila[1]:
+                    mejor_fila = fila
+                elif fila[1] == mejor_fila[1] and fila[4] > mejor_fila[4]:
+                    mejor_fila = fila
+                elif fila[1] == mejor_fila[1] and fila[4] == mejor_fila[4] and fila[2] > mejor_fila[2]:
+                    mejor_fila = fila
+
+            tabla_ordenada += [mejor_fila]
+
+            lista_nueva = []
+
+            for fila in tabla:
+                if fila != mejor_fila:
+                    lista_nueva += [fila]
+
+            tabla = lista_nueva
+            contador += 1
+
+        
+        tabla_con_posiciones = []
+        posicion = 1
+
+        for fila in tabla_ordenada:
+            tabla_con_posiciones += [[posicion, fila[0], fila[1], fila[2], fila[3], fila[4]]]
+            posicion += 1
+
+        return tabla_con_posiciones
+
+    
+    
         
 
         
