@@ -948,6 +948,21 @@ class Mundial():
         self.fases = []
         self.campeon = None
 
+    def registrar_pais(self,pais):
+        if not isinstance(pais,Pais):
+            return "Error: Debe registrar un objeto de la clase pais"
+
+        self.paises += [pais]
+
+        return "Se registro un país"
+
+    
+
+
+    
+
+        
+
         
             
             
