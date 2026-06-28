@@ -908,6 +908,31 @@ class Fase:
                 resultado += f" (Penales: {partido.penales_equipo1}-{partido.penales_equipo2})"
 
         return resultado
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+    def obtener_clasificados(self):
+        clasificados = []
+
+        for partido in self.partidos:
+            if partido.goles_equipo1 > partido.goles_equipo2:
+                clasificados += [partido.equipo_1]
+
+            elif partido.goles_equipo2 > partido.goles_equipo1:
+                clasificados += [partido.equipo_2]
+
+            else:
+                if partido.penales_equipo1 > partido.penales_equipo2:
+                    clasificados += [partido.equipo_1]
+                else:
+                    clasificados += [partido.equipo_2]
+
+        return clasificados
+            
         
 
                 
