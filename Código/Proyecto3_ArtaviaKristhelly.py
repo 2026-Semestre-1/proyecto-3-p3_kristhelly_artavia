@@ -1065,6 +1065,25 @@ class Mundial():
 
         return "Fase eliminatoria creada"
 
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+
+    def jugar_fase_eliminatoria(self,fase):
+
+        fase.jugar_fase()
+
+        return fase.obtener_clasificados()
+
+    
+    
+    
+
+    
+
             
         
         
