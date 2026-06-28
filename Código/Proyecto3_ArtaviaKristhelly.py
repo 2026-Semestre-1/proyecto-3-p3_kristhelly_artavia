@@ -948,6 +948,12 @@ class Mundial():
         self.fases = []
         self.campeon = None
 
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def registrar_pais(self,pais):
         if not isinstance(pais,Pais):
             return "Error: Debe registrar un objeto de la clase pais"
@@ -956,6 +962,12 @@ class Mundial():
 
         return "Se registró un país"
 
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def registrar_seleccion(self, seleccion):
         if not isinstance(seleccion,Seleccion):
             return "Error: Debe registrar un objeto de la clase seleccion"
@@ -964,7 +976,61 @@ class Mundial():
 
         return "Se registró una selección"
 
-    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+    def crear_grupos(self,cantidad_grupos):
+        if not isinstance(cantidad_grupos, int):
+            return "Error: La cantidad de grupos debe ser un número entero"
+
+        if cantidad_grupos <= 0:
+            return "Error: La cantidad de grupos debe ser mayor a 0"
+
+        if self.contar_selecciones() == 0:
+            return "Error: No hay selecciones registradas"
+
+        letras = ["A", "B", "C", "D", "E", "F", "G", "H"]
+
+        contador = 0
+
+        while contador < cantidad_grupos:
+            grupo = Grupo("Grupo " + letras[contador])
+            self.grupos += [grupo]
+            contador += 1
+
+        indice_grupo = 0
+
+        for seleccion in self.selecciones:
+            self.grupos[indice_grupo].agregar_equipo(seleccion)
+
+            indice_grupo += 1
+
+            if indice_grupo == cantidad_grupos:
+                indice_grupo = 0
+
+        return "Grupos creados correctamente"
+
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+    def contar_selecciones(self):
+        contador = 0
+
+        for seleccion in self.selecciones:
+            contador += 1
+
+        return contador
+            
+        
+        
+        
+        
 
 
     
