@@ -787,31 +787,29 @@ class Grupo():
 
         return tabla_con_posiciones
 
-    
-    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+    def obtener_clasificados(self):
+        tabla = self.calcular_tabla()
+
+        clasificado_1= tabla[0][1]
+        clasificado_2 = tabla[1][1]
+
+        return [clasificado_1, clasificado_2]
+
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+
+    def mostrar_tabla(self):
+
+
+
         
-
-        
-        
-    
-        
-
-            
-            
-
-        
-
-        
-        
-        
-
-
-
-
-
-
-
-
-
-
-    
