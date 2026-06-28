@@ -822,6 +822,14 @@ class Grupo():
 
         return resultado
 
+class Fase:
+    def __init__(self, nombre_fase):
+        if not isinstance(nombre_fase, str):
+            raise TypeError("Error: El nombre de la fase debe ser un texto")
+
+        self.nombre_fase = nombre_fase
+        self.partidos = []
+
 
 
         
