@@ -326,9 +326,9 @@ class Futbolista(Persona):
     
     """
     Nombre: registrar_tarjeta
-    Entradas:  tipo
-    Salidas:
-    Restricciones:
+    Entradas: tipo
+    Salidas: Mensaje de registro de tarjeta ya sea amarilla o roja
+    Restricciones: No hay
     """
     def registrar_tarjeta(self, tipo):
         if tipo == "tarjeta amarilla":
@@ -341,6 +341,13 @@ class Futbolista(Persona):
 
         return "Tipo de tarjeta no valido"
 
+
+"""
+Nombre: class Seleccion
+Entradas: 
+Salidas: Métodos de constructor, mostrar_datos,contar_jugadores,agregar_jugador,eliminar_jugador,asignar_entrenador,registrar_resultado,calcular_fuerza_equipo,promedio_jugadores,factor_entrenador,factor_ranking
+Restricciones: 
+"""
 class Seleccion():
     def __init__(self,codigo_equipo, pais ):
         if not isinstance (codigo_equipo,str):
@@ -360,10 +367,10 @@ class Seleccion():
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
-    Restricciones:
+    Nombre:mostrar_datos 
+    Entradas: No hay  
+    Salidas:  Muestra los datos de la selección
+    Restricciones: No hay
     """
     def mostrar_datos(self):
         return (f"\nEl codigo de la selección es: {self.codigo_equipo}"
@@ -379,9 +386,9 @@ class Seleccion():
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: contar_jugadores
+    Entradas: No hay 
+    Salidas: retorna el contador con la cantidad de jugadores 
     Restricciones:
     """
     def contar_jugadores(self):
@@ -394,10 +401,10 @@ class Seleccion():
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
-    Restricciones:
+    Nombre: agregar_jugador  
+    Entradas: futbolista   
+    Salidas:  Mensaje que confirma que fue agregado
+    Restricciones: futbolista debe ser un objeto de Futbolista 
     """
     def agregar_jugador(self, futbolista):
         if not isinstance(futbolista, Futbolista):
@@ -412,10 +419,10 @@ class Seleccion():
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
-    Restricciones:
+    Nombre: eliminar_jugador
+    Entradas:  dorsal
+    Salidas:  Mensaje que confirma que el dorsal se elimino
+    Restricciones:dorsal debe ser de tipo int
     """
     def eliminar_jugador(self, dorsal):
         if not isinstance (dorsal, int):
@@ -440,9 +447,9 @@ class Seleccion():
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: asignar_entrenador
+    Entradas:  entrenador
+    Salidas: Mensaje que confirma si el entrenador se asigno 
     Restricciones:
     """
     def asignar_entrenador(self, entrenador):
@@ -455,10 +462,10 @@ class Seleccion():
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
-    Restricciones:
+    Nombre: registrar_resultado
+    Entradas: goles_favor,goles_contra,tarjetas_am, tarjetas_roj 
+    Salidas:  Mensaje qeu indica ue se actuaizaron los totales de el equipo
+    Restricciones:goles_favor,goles_contra,tarjetas_am y tarjetas_roj deben ser int
     """
     def registrar_resultado(self, goles_favor,goles_contra,tarjetas_am, tarjetas_roj):
         if not isinstance (goles_favor, int):
@@ -479,9 +486,9 @@ class Seleccion():
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: calcular_fuerza_equipo
+    Entradas:  No hay
+    Salidas: Valor de la fuerza del equipo 
     Restricciones:
     """
     def calcular_fuerza_equipo(self):
@@ -496,10 +503,10 @@ class Seleccion():
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
-    Restricciones:
+    Nombre: promedio_jugadores
+    Entradas:No hay
+    Salidas: Promedio de los puntajes de los 11 mejores jugadores 
+    Restricciones: La seleccion debe tener minimo 11 jugadores
     """        
     def promedio_jugadores(self):
         mejores_jugadores = []
@@ -537,10 +544,10 @@ class Seleccion():
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
-    Restricciones:
+    Nombre: factor_entrenador
+    Entradas: No hay 
+    Salidas:  experiencia del entrenador en una escala del 1-100
+    Restricciones:Si al realizar la conversion a las escala 1-100 sobre pasa 100 se mantiene en 100
     """
     def factor_entrenador(self):
        factor = self.entrenador.experiencia_anios * 4
@@ -552,9 +559,9 @@ class Seleccion():
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: factor_ranking
+    Entradas: No hay 
+    Salidas: El factor calculado al restar a ranking fifa a 100
     Restricciones:
     """
     def factor_ranking(self):
@@ -586,9 +593,9 @@ class Partido:
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: simular
+    Entradas: No hay 
+    Salidas:  No retorna un valor,Realiza la simulación de goles, diferencia de fuerza,
     Restricciones:
     """
     def simular(self):
@@ -622,9 +629,9 @@ class Partido:
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: generar_ganador
+    Entradas: No hay 
+    Salidas: Retorna el equipo ganador 
     Restricciones:
     """
     def generar_ganador(self):
@@ -637,14 +644,20 @@ class Partido:
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: mostrar_resultado
+    Entradas:No hay  
+    Salidas:  Retorna los resultados del partido (el marcador)
     Restricciones:
     """
     def mostrar_resultado(self):
         return f"{self.equipo_1.pais.nombre} {self.goles_equipo1} - {self.goles_equipo2} {self.equipo_2.pais.nombre}"
 
+ """
+Nombre: class Grupo
+Entradas:No hay
+Salidas:  métodos contar_equipos,agregar_equipo,jugar_partidos,calcular_tabla,obtener_clasificados,mostrar_tabla
+Restricciones:
+"""
 class Grupo():
     def __init__(self, nombre_grupo):
         if not isinstance(nombre_grupo, str):
@@ -656,9 +669,9 @@ class Grupo():
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: contar_equipos
+    Entradas: No hay  
+    Salidas: Cantidad de equipos 
     Restricciones:
     """
     def contar_equipos(self):
@@ -671,9 +684,9 @@ class Grupo():
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: agregar_equipo
+    Entradas:seleccion  
+    Salidas: Mensaje de que el equipo se agrego 
     Restricciones:
     """
     def agregar_equipo(self, seleccion):
@@ -689,9 +702,9 @@ class Grupo():
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: jugar_partidos
+    Entradas: No hay  
+    Salidas: Mensaje que confirma que se jugaron los partidos 
     Restricciones:
     """
     def jugar_partidos(self):
@@ -720,9 +733,9 @@ class Grupo():
         return "Partidos jugados"
 
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: calcular_tabla
+    Entradas: No hay  
+    Salidas: Retorna las tablas ordenadas con puntos, goles a favor,goles en contra y diferencia 
     Restricciones:
     """
     def calcular_tabla(self):
@@ -795,10 +808,10 @@ class Grupo():
         return tabla_con_posiciones
 
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
-    Restricciones:
+    Nombre: obtener_clasificados 
+    Entradas: No hay 
+    Salidas: Retorna los equipos clasificados 
+    Restricciones: 
     """
     def obtener_clasificados(self):
         tabla = self.calcular_tabla()
@@ -809,9 +822,9 @@ class Grupo():
         return [clasificado_1, clasificado_2]
 
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: mostrar_tabla
+    Entradas:  No hay
+    Salidas:  Tabla con las posiciones ordenadas del grupo
     Restricciones:
     """
 
@@ -829,6 +842,13 @@ class Grupo():
 
         return resultado
 
+
+"""
+Nombre: class Fase
+Entradas:  
+Salidas:  
+Restricciones:
+"""
 class Fase:
     def __init__(self, nombre_fase):
         if not isinstance(nombre_fase, str):
