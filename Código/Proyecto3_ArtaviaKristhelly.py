@@ -1039,6 +1039,21 @@ class Mundial():
 
         return "La fase de grupos se jugó"
 
+
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+    def contar_lista(self, lista):
+        contador = 0
+
+        for elemento in lista:
+            contador += 1
+
+        return contador
+    
     """
     Nombre: 
     Entradas:  
@@ -1071,5 +1086,34 @@ class Mundial():
         fase.jugar_fase()
 
         return fase.obtener_clasificados()
+
+    """
+    Nombre:
+    Entradas:
+    Salidas:
+    Restricciones:
+    """
+    def determinar_campeon(self):
+        clasificados = []
+
+        for grupo in self.grupos:
+            equipos = grupo.obtener_clasificados()
+            clasificados += equipos
+
+        fase = self.armar_fase_eliminatoria("Octavos de Final", clasificados)
+        clasificados = self.jugar_fase_eliminatoria(fase)
+
+        fase = self.armar_fase_eliminatoria("Cuartos de Final", clasificados)
+        clasificados = self.jugar_fase_eliminatoria(fase)
+
+        fase = self.armar_fase_eliminatoria("Semifinal", clasificados)
+        clasificados = self.jugar_fase_eliminatoria(fase)
+
+        fase = self.armar_fase_eliminatoria("Final", clasificados)
+        clasificados = self.jugar_fase_eliminatoria(fase)
+
+        self.campeon = clasificados[0]
+
+        return "El campeón es: " + self.campeon.pais.nombre
 
   
