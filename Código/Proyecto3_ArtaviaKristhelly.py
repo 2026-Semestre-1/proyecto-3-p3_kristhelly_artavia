@@ -1038,6 +1038,38 @@ class Mundial():
             grupo.jugar_partidos()
 
         return "La fase de grupos se jugó"
+
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+    def armar_fase_eliminatoria(self,nombre_fase,clasificados):
+        fase = Fase(nombre_fase)
+        
+        i = 0
+
+        while i < 8:
+            fase.registrar_juego(clasificados[i][0], clasificados[i + 1][1])
+            i += 2
+
+
+        i = 0
+
+        while i < 8:
+            fase.registrar_juego(clasificados[i + 1][0], clasificados[i][1])
+            i += 2
+
+        self.fases += [fase]
+
+        return "Fase eliminatoria creada"
+
+            
+        
+        
+
+    
         
 
     
