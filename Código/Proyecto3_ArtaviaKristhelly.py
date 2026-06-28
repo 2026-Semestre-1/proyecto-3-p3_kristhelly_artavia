@@ -1088,10 +1088,10 @@ class Mundial():
         return fase.obtener_clasificados()
 
     """
-    Nombre:
-    Entradas:
-    Salidas:
-    Restricciones:
+    Nombre: determinar_campeon
+    Entradas: No hay
+    Salidas: Campeón del mundial
+    Restricciones: No hay
     """
     def determinar_campeon(self):
         clasificados = []
@@ -1117,10 +1117,10 @@ class Mundial():
         return "El campeón es: " + self.campeon.pais.nombre
 
     """
-    Nombre:
-    Entradas:
-    Salidas:
-    Restricciones:
+    Nombre: mostrar_tabla_general 
+    Entradas: No hay
+    Salidas: La tabla con las posiciones de todos los grupos
+    Restricciones: No hay
     """
 
     def mostrar_tabla_general(self):
@@ -1131,7 +1131,51 @@ class Mundial():
             resultado += "\n\n"
 
         return resultado
- 
+
+    """
+    Nombre: generar_reporte
+    Entradas: No hay
+    Salidas: Mensaje que indica que el reporte se generó
+    Restricciones: No hay
+    """
+    def generar_reporte(self):
+        resultado = ""
+
+        resultado += "REPORTE DEL MUNDIAL\n"
+        resultado += f"Nombre: {self.nombre}\n"
+        resultado += f"Año: {self.anio}\n\n"
+
+        resultado += "TABLAS DE POSICIONES\n\n"
+        resultado += self.mostrar_tabla_general()
+
+        resultado += "\nFASES ELIMINATORIAS\n\n"
+
+        for fase in self.fases:
+            resultado += fase.mostrar_juegos()
+            resultado += "\n\n"
+
+        if self.campeon != None:
+            resultado += f"Campeón: {self.campeon.pais.nombre}"
+        else:
+            resultado += "El campeón todavía no ha sido seleccionado"
+
+        archivo = open("reporte_mundial.txt", "w")
+        archivo.write(resultado)
+        archivo.close()
+
+        return "Reporte generado"
+
+        
+
+            
+
+
+        
+        
+        
+
+        
+        
         
             
         
