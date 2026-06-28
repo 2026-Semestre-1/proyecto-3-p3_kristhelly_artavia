@@ -1116,4 +1116,26 @@ class Mundial():
 
         return "El campeón es: " + self.campeon.pais.nombre
 
+    """
+    Nombre:
+    Entradas:
+    Salidas:
+    Restricciones:
+    """
+
+    def mostrar_tabla_general(self):
+        resultado = ""
+        
+        for grupo in self.grupos:
+            resultado += grupo.mostrar_tabla()
+            resultado += "\n\n"
+
+        return resultado
+ 
+        
+            
+        
+
+    
+
   
