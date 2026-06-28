@@ -809,6 +809,18 @@ class Grupo():
     """
 
     def mostrar_tabla(self):
+        tabla = self.calcular_tabla()
+
+        resultado = f"Tabla del {self.nombre_grupo}"
+
+        for fila in tabla:
+            resultado += (f"\n{fila[0]}. {fila[1].pais.nombre}"
+                          f" - Puntos: {fila[2]}"
+                          f" - Goles a favor: {fila[3]}"
+                          f" - Goles en contra: {fila[4]}"
+                          f" - Diferencia: {fila[5]}")
+
+        return resultado
 
 
 
