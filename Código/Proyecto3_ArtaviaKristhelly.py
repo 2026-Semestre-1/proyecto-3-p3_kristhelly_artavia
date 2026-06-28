@@ -830,6 +830,95 @@ class Fase:
         self.nombre_fase = nombre_fase
         self.partidos = []
 
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+    def contar_partidos(self):
+        contador = 0
+
+        for partido in self.partidos:
+            contador += 1
+
+        return contador
+
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+    def registrar_juego(self, equipo1,equipo2):
+        if not isinstance(equipo1, Seleccion):
+            return "Error: El equipo 1 debe ser un objeto de la clase Seleccion"
+
+        if not isinstance(equipo2, Seleccion):
+            return "Error: El equipo 2 debe ser un objeto de la clase Seleccion"
+
+        #crea ID automaticamente para identificar los partidos
+        id_partido = self.contar_partidos() + 1
+
+        partido = Partido(id_partido, equipo1, equipo2, self.nombre_fase, "Sin fecha")
+
+        self.partidos += [partido]
+
+        return "Partido registrado"
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+    def jugar_fase(self):
+        for partido in self.partidos:
+            partido.simular()
+
+            partido.penales_equipo1 = 0
+            partido.penales_equipo2 = 0
+
+            if partido.goles_equipo1 == partido.goles_equipo2:
+                penales1 = random.randint(2, 5)
+                penales2 = random.randint(2, 5)
+
+                while penales1 == penales2:
+                    penales1 = random.randint(2, 5)
+                    penales2 = random.randint(2, 5)
+
+                partido.penales_equipo1 = penales1
+                partido.penales_equipo2 = penales2
+
+        return "La fase se jugó"
+
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+    def mostrar_juegos(self):
+        resultado = f"Resultados de {self.nombre_fase}"
+
+        for partido in self.partidos:
+            resultado += f"\n{partido.mostrar_resultado()}"
+
+            if partido.penales_equipo1 > 0 or partido.penales_equipo2 > 0:
+                resultado += f" (Penales: {partido.penales_equipo1}-{partido.penales_equipo2})"
+
+        return resultado
+        
+
+                
+
+                    
+
+                
+            
+        
+        
+    
 
 
         
