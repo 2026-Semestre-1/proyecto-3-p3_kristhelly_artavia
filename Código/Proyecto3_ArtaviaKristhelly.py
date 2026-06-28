@@ -1026,6 +1026,21 @@ class Mundial():
             contador += 1
 
         return contador
+
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+    def jugar_fase_grupos(self):
+        for grupo in self.grupos:
+            grupo.jugar_partidos()
+
+        return "La fase de grupos se jugó"
+        
+
+    
             
         
         
