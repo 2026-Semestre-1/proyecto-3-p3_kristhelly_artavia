@@ -954,7 +954,15 @@ class Mundial():
 
         self.paises += [pais]
 
-        return "Se registro un país"
+        return "Se registró un país"
+
+    def registrar_seleccion(self, seleccion):
+        if not isinstance(seleccion,Seleccion):
+            return "Error: Debe registrar un objeto de la clase seleccion"
+
+        self.selecciones += [seleccion]
+
+        return "Se registró una selección"
 
     
 
