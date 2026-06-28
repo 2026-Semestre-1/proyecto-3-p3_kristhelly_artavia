@@ -1049,21 +1049,15 @@ class Mundial():
         fase = Fase(nombre_fase)
         
         i = 0
+        cantidad =  self.contar_lista(clasificados)
 
-        while i < 8:
-            fase.registrar_juego(clasificados[i][0], clasificados[i + 1][1])
-            i += 2
-
-
-        i = 0
-
-        while i < 8:
-            fase.registrar_juego(clasificados[i + 1][0], clasificados[i][1])
+        while i < cantidad:
+            fase.registrar_juego(clasificados[i], clasificados[i + 1])
             i += 2
 
         self.fases += [fase]
 
-        return "Fase eliminatoria creada"
+        return fase
 
     """
     Nombre: 
@@ -1078,45 +1072,4 @@ class Mundial():
 
         return fase.obtener_clasificados()
 
-    
-    
-    
-
-    
-
-            
-        
-        
-
-    
-        
-
-    
-            
-        
-        
-        
-        
-
-
-    
-
-        
-
-        
-            
-            
-        
-
-                
-
-                    
-
-                
-            
-        
-        
-    
-
-
-        
+  
