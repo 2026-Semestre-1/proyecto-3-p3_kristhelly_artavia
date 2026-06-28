@@ -710,6 +710,47 @@ class Grupo():
 
             i += 1
 
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+    def calcular_tabla(self):
+        tabla = []
+
+        for equipo in self.equipos:
+            puntos = 0
+            goles_favor = 0
+            goles_contra = 0
+
+            for partido in self.partidos:
+                if equipo == partido.equipo_1:
+                    goles_favor += partido.goles_equipo1
+                    goles_contra += partido.goles_equipo2
+
+                    if partido.goles_equipo1 > partido.goles_equipo2:
+                        puntos += 3
+                        
+                    if partido.goles_equipo1 == partido.goles_equipo2:
+                        puntos += 1
+
+                if equipo == partido.equipo_2:
+                    goles_favor += partido.goles_equipo2
+                    goles_contra += partido.goles_equipo1
+
+                    if partido.goles_equipo2 > partido.goles_equipo1:
+                        puntos += 3
+
+                    if partido.goles_equipo2 == partido.goles_equipo1:
+                        puntos += 1
+
+            diferencia = goles_favor - goles_contra
+            tabla += [[equipo,puntos,goles_favor,goles_contra,diferencia]]
+
+        return tabla
+        
+
         
         
     
