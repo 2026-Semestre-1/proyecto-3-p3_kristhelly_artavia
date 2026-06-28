@@ -932,6 +932,24 @@ class Fase:
                     clasificados += [partido.equipo_2]
 
         return clasificados
+
+class Mundial():
+    def __init__(self,nombre,anio):
+        if not isinstance(nombre,str):
+            raise TypeError("Error: El nombre del torneo debe ser un texto")
+        if not isinstance(anio,int):
+            raise TypeError("Error:El año del torneo debe ser un número entero")
+
+        self.nombre = nombre
+        self.anio = anio
+        self.paises = []
+        self.selecciones = []
+        self.grupos = []
+        self.fases = []
+        self.campeon = None
+
+        
+            
             
         
 
