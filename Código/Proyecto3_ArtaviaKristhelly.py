@@ -2,9 +2,9 @@ import random
 
 """
 Nombre: class Pais
-Entradas: No hay 
+Entradas: codigo_fifa,nombre,continente,ranking_fifa 
 Salidas: Métodos de constructor, mostrar_datos y actualizar_datos 
-Restricciones:
+Restricciones: 
 """
 class Pais:
     def __init__(self,codigo_fifa,nombre,continente,ranking_fifa):
@@ -26,8 +26,8 @@ class Pais:
     """
     Nombre: mostrar_datos 
     Entradas: No hay 
-    Salidas: 
-    Restricciones:
+    Salidas: Mostrar los datos de el país
+    Restricciones: No hay
     """
     def mostrar_datos(self):
         return (f"Codigo Oficial FIFA: {self.codigo_fifa}\n"
@@ -39,7 +39,7 @@ class Pais:
     Nombre:actualizar_datos  
     Entradas: codigo_fifa, nombre, continente, ranking_fifa
     Salidas: Datos actuaizados
-    Restricciones:
+    Restricciones: nuevo_codigo_fifa,nuevo_nombre,nuevo_continente, deben ser str, y nuevo_ranking_fifa debe ser int
     """
     def actualizar_datos(self, nuevo_codigo_fifa = None, nuevo_nombre = None, nuevo_continente = None, nuevo_ranking_fifa = None):
 
@@ -70,7 +70,7 @@ class Pais:
 Nombre: class Persona
 Entradas: No hay 
 Salidas: Métodos de constructor y mostrar_datos 
-Restricciones:
+Restricciones: nombre,apellido,fecha_nacimiento,nacionalidad deben ser str
 """
 class Persona():
     def __init__(self, nombre, apellido,fecha_nacimiento,nacionalidad):
@@ -93,7 +93,7 @@ class Persona():
     Nombre: mostrar_datos
     Entradas: No hay 
     Salidas: Datos de persona, la cual lo heredan Entrenador y Futbolista 
-    Restricciones:
+    Restricciones: No hay
     """
     def mostrar_datos(self):
         return (f"Nombre: {self.nombre}\n"
@@ -104,9 +104,9 @@ class Persona():
 
 """
 Nombre: class Entrenador
-Entradas: No hay 
+Entradas: Persona
 Salidas: Métodos de constructor, mostrar_datos y actualizar_datos
-Restricciones:
+Restricciones: 
 """
 class Entrenador(Persona):
     def __init__(self, nombre, apellido, fecha_nacimiento, nacionalidad,licencia, experiencia_anios, sistema_juego):
@@ -126,7 +126,7 @@ class Entrenador(Persona):
     """
     Nombre: mostrar_datos
     Entradas: No hay 
-    Salidas:  
+    Salidas: Datos de el entrenador sobreescribiendo el método de Persona
     Restricciones:
     """
     def mostrar_datos(self):
@@ -137,9 +137,9 @@ class Entrenador(Persona):
 
     """
     Nombre: actualizar_datos
-    Entradas:  
-    Salidas:  
-    Restricciones:
+    Entradas: nuevo_nombre, nuevo_apellido, nueva_fecha_nacimiento , nueva_nacionalidad ,nueva_licencia,nueva_experiencia_anios, nuevo_sistema_juego
+    Salidas:  Se actualizan los datos del entrenador
+    Restricciones:nuevo_nombre,nuevo_apellido,nueva_fecha_nacimiento,nueva_nacionalidad,nueva_licencia,nuevo_sistema_juego debe ser un string y  nueva_experiencia_anios debe ser un int
     """
     def actualizar_datos(self, nuevo_nombre = None, nuevo_apellido = None, nueva_fecha_nacimiento = None, nueva_nacionalidad = None,nueva_licencia = None,nueva_experiencia_anios = None, nuevo_sistema_juego = None):
         if(nuevo_nombre != None):
@@ -182,6 +182,12 @@ class Entrenador(Persona):
         
         return "La actualización se realizó con éxito"
 
+"""
+Nombre: class Futbolista
+Entradas: Persona
+Salidas: Métodos de constructor, mostrar_datos,actualizar_datos,registrar_gol,registrar_asistencia,registrar_tarjeta
+Restricciones: 
+"""
 class Futbolista(Persona):
     def __init__(self, nombre, apellido, fecha_nacimiento, nacionalidad, dorsal, posicion, total_tarjetas_amarillas, total_tarjetas_rojas, goles, asistencias, puntaje_individual):
 
@@ -214,8 +220,8 @@ class Futbolista(Persona):
     """
     Nombre: mostrar_datos
     Entradas: No hay 
-    Salidas:  
-    Restricciones:
+    Salidas:Datos de futbolista
+    Restricciones:No hay
     """
     def mostrar_datos(self):
         return (Persona.mostrar_datos(self)
@@ -228,9 +234,10 @@ class Futbolista(Persona):
                 + f"\nPuntaje: {self.puntaje_individual}")
 
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: actualizar_datos
+    Entradas: nuevo_nombre, nuevo_apellido, nueva_fecha_nacimiento, nueva_nacionalidad, nuevo_dorsal, nueva_posicion,
+                         nuevo_total_tarjetas_amarillas, nuevo_total_tarjetas_rojas, nuevos_goles, nuevas_asistencias, nuevo_puntaje_individual 
+    Salidas: Los datos del futbolista actualizados 
     Restricciones:
     """
     def actualizar_datos(self, nuevo_nombre = None, nuevo_apellido = None, nueva_fecha_nacimiento = None, nueva_nacionalidad = None, nuevo_dorsal = None, nueva_posicion = None,
@@ -296,10 +303,10 @@ class Futbolista(Persona):
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
-    Restricciones:
+    Nombre: registrar_gol
+    Entradas: No hay 
+    Salidas:  Mensaje de que se regsitro un gol
+    Restricciones: No hay
     """
     def registrar_gol(self):
         self.goles += 1
@@ -307,10 +314,10 @@ class Futbolista(Persona):
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
-    Restricciones:
+    Nombre: registrar_asistencia
+    Entradas: No hay  
+    Salidas:  Mensaje de que se registro una asistencia
+    Restricciones: No hay
     """
     def registrar_asistencia(self):
         self.asistencias += 1
@@ -318,9 +325,9 @@ class Futbolista(Persona):
 
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: registrar_tarjeta
+    Entradas:  tipo
+    Salidas:
     Restricciones:
     """
     def registrar_tarjeta(self, tipo):
