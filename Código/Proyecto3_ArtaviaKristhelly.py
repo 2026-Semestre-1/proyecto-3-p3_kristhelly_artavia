@@ -226,7 +226,13 @@ class Futbolista(Persona):
                 + f"\nGoles: {self.goles}"
                 + f"\nAsistencias: {self.asistencias}"
                 + f"\nPuntaje: {self.puntaje_individual}")
-    
+
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def actualizar_datos(self, nuevo_nombre = None, nuevo_apellido = None, nueva_fecha_nacimiento = None, nueva_nacionalidad = None, nuevo_dorsal = None, nueva_posicion = None,
                          nuevo_total_tarjetas_amarillas = None, nuevo_total_tarjetas_rojas = None, nuevos_goles = None, nuevas_asistencias = None, nuevo_puntaje_individual = None):
         if( nuevo_nombre != None):
@@ -288,14 +294,35 @@ class Futbolista(Persona):
         
         return "La actualización se realizó con éxito"
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def registrar_gol(self):
         self.goles += 1
         return "Se registro un gol"
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def registrar_asistencia(self):
         self.asistencias += 1
         return "Se registro una asistencia"
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def registrar_tarjeta(self, tipo):
         if tipo == "tarjeta amarilla":
             self.total_tarjetas_amarillas += 1
@@ -324,6 +351,13 @@ class Seleccion():
         self.total_tarjetas_rojas = 0
         self.fuerza_equipo = 0
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def mostrar_datos(self):
         return (f"\nEl codigo de la selección es: {self.codigo_equipo}"
             f"\nEl país de la selección es: {self.pais.mostrar_datos()}"
@@ -336,6 +370,13 @@ class Seleccion():
             f"\nLa fuerza del equipo es: {self.fuerza_equipo}")
     
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def contar_jugadores(self):
         contador = 0
 
@@ -344,6 +385,13 @@ class Seleccion():
 
         return contador
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def agregar_jugador(self, futbolista):
         if not isinstance(futbolista, Futbolista):
             return "Error: Debe agregar un objeto de la clase Futbolista"
@@ -355,6 +403,13 @@ class Seleccion():
 
         return "Jugador agregado con éxito"
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def eliminar_jugador(self, dorsal):
         if not isinstance (dorsal, int):
             return "Error: El dorsal debe ser un entero"
@@ -376,6 +431,13 @@ class Seleccion():
 
         return "Jugador eliminado"
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def asignar_entrenador(self, entrenador):
         if not isinstance(entrenador, Entrenador):
             return "Error: Debe ser un objeto de la clase Entrenador"
@@ -384,6 +446,13 @@ class Seleccion():
 
         return "Entrenador asignado"
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def registrar_resultado(self, goles_favor,goles_contra,tarjetas_am, tarjetas_roj):
         if not isinstance (goles_favor, int):
             return "Goles a favor deben ser un entero"
@@ -401,6 +470,13 @@ class Seleccion():
 
         return "Se actualizaron los totales del equipo"
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def calcular_fuerza_equipo(self):
         if self.entrenador == None:
             return "Se debe asignar un entrenador"
@@ -410,7 +486,14 @@ class Seleccion():
         self.fuerza_equipo = (self.promedio_jugadores() * 0.6) + (self.factor_entrenador() * 0.25) + (self.factor_ranking() * 0.15)
 
         return self.fuerza_equipo
-        
+
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """        
     def promedio_jugadores(self):
         mejores_jugadores = []
         futbolistas = self.jugadores
@@ -445,6 +528,13 @@ class Seleccion():
 
         return promedio
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def factor_entrenador(self):
        factor = self.entrenador.experiencia_anios * 4
 
@@ -453,6 +543,13 @@ class Seleccion():
 
        return factor
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def factor_ranking(self):
         factor = 100 - self.pais.ranking_fifa
 
@@ -480,6 +577,13 @@ class Partido:
         self.fase = fase
         self.fecha = fecha
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def simular(self):
 
         #diferencia de fuerza
@@ -509,6 +613,13 @@ class Partido:
             self.goles_equipo1 = random.randint(0,4)
             self.goles_equipo2 = random.randint(0,4)
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def generar_ganador(self):
         if self.goles_equipo1 > self.goles_equipo2:
             return self.equipo_1
@@ -517,6 +628,13 @@ class Partido:
         if self.goles_equipo1 == self.goles_equipo2:
             return None
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def mostrar_resultado(self):
         return f"{self.equipo_1.pais.nombre} {self.goles_equipo1} - {self.goles_equipo2} {self.equipo_2.pais.nombre}"
 
@@ -529,6 +647,13 @@ class Grupo():
         self.equipos = []
         self.partidos = []
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def contar_equipos(self):
         contador = 0
 
@@ -537,6 +662,13 @@ class Grupo():
 
         return contador
 
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
     def agregar_equipo(self, seleccion):
         if not isinstance(seleccion, Seleccion):
             return "Error: Debe agregar un objeto de la clase Seleccion"
@@ -547,6 +679,40 @@ class Grupo():
         self.equipos += [seleccion]
 
         return "Equipo agregado"
+
+    
+    """
+    Nombre: 
+    Entradas:  
+    Salidas:  
+    Restricciones:
+    """
+    def jugar_partidos(self):
+        if self.contar_equipos() != 4:
+            return "Error: Deben haber 4 equipos para jugar en los partidos"
+
+        i = 0
+        id_partido = 1
+
+        while i < 4:
+            j = i + 1
+
+            while j < 4:
+                equipo_1 = self.equipos[i]
+                equipo_2 = self.equipos[j]
+
+                partido = Partido(id_partido, equipo_1, equipo_2, "fase", "sin fecha")
+                partido.simular()
+                self.partidos += [partido]
+
+                id_partido += 1
+                j += 1
+
+            i += 1
+
+        
+        
+    
         
 
             
