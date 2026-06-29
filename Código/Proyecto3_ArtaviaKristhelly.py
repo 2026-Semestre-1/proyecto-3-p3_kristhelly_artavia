@@ -1429,6 +1429,202 @@ class Mundial():
 
         return "Jugadores cargados"
 
+    """
+    Nombre: guardar_partidos
+    Entradas: No hay
+    Salidas: Mensaje que indica que los partidos fueron guardados
+    Restricciones: No hay
+    """
+    def guardar_partidos(self):
+        resultado = ""
+
+        for grupo in self.grupos:
+            for partido in grupo.partidos:
+                resultado += (f"GRUPO;"
+                              f"{grupo.nombre_grupo};"
+                              f"{partido.id_partido};"
+                              f"{partido.equipo_1.codigo_equipo};"
+                              f"{partido.equipo_2.codigo_equipo};"
+                              f"{partido.goles_equipo1};"
+                              f"{partido.goles_equipo2};"
+                              f"{partido.fecha}\n")
+
+        for fase in self.fases:
+            for partido in fase.partidos:
+                resultado += (f"FASE;"
+                              f"{fase.nombre_fase};"
+                              f"{partido.id_partido};"
+                              f"{partido.equipo_1.codigo_equipo};"
+                              f"{partido.equipo_2.codigo_equipo};"
+                              f"{partido.goles_equipo1};"
+                              f"{partido.goles_equipo2};"
+                              f"{partido.fecha}\n")
+
+        archivo = open("partidos.txt", "w")
+        archivo.write(resultado)
+        archivo.close()
+
+        return "Partidos guardados"
+
+    """
+    Nombre: cargar_partidos
+    Entradas: No hay
+    Salidas: Mensaje que indica que los partidos fueron cargados
+    Restricciones: Las selecciones deben cargarse primero
+    """
+    def cargar_partidos(self):
+        try:
+            archivo = open("partidos.txt", "r")
+        except FileNotFoundError:
+            return "El archivo partidos.txt no existe"
+
+        self.grupos = []
+        self.fases = []
+
+        for linea in archivo:
+            linea = linea.strip()
+
+            if linea != "":
+                datos = linea.split(";")
+
+                tipo = datos[0]
+                nombre = datos[1]
+                id_partido = int(datos[2])
+
+                equipo_1 = None
+                equipo_2 = None
+
+                for seleccion in self.selecciones:
+                    if seleccion.codigo_equipo == datos[3]:
+                        equipo_1 = seleccion
+
+                    if seleccion.codigo_equipo == datos[4]:
+                        equipo_2 = seleccion
+
+                if equipo_1 == None or equipo_2 == None:
+                    archivo.close()
+                    return "Error: No se encontró una selección del partido"
+
+                partido = Partido(
+                    id_partido,
+                    equipo_1,
+                    equipo_2,
+                    nombre,
+                    datos[7])
+
+                partido.goles_equipo1 = int(datos[5])
+                partido.goles_equipo2 = int(datos[6])
+
+                if tipo == "GRUPO":
+                    grupo_encontrado = None
+
+                    for grupo in self.grupos:
+                        if grupo.nombre_grupo == nombre:
+                            grupo_encontrado = grupo
+
+                    if grupo_encontrado == None:
+                        grupo_encontrado = Grupo(nombre)
+                        self.grupos += [grupo_encontrado]
+
+                    equipo_registrado = False
+
+                    for equipo in grupo_encontrado.equipos:
+                        if equipo == equipo_1:
+                            equipo_registrado = True
+
+                    if equipo_registrado == False:
+                        grupo_encontrado.equipos += [equipo_1]
+
+                    equipo_registrado = False
+
+                    for equipo in grupo_encontrado.equipos:
+                        if equipo == equipo_2:
+                            equipo_registrado = True
+
+                    if equipo_registrado == False:
+                        grupo_encontrado.equipos += [equipo_2]
+
+                    grupo_encontrado.partidos += [partido]
+
+                if tipo == "FASE":
+                    fase_encontrada = None
+
+                    for fase in self.fases:
+                        if fase.nombre_fase == nombre:
+                            fase_encontrada = fase
+
+                    if fase_encontrada == None:
+                        fase_encontrada = Fase(nombre)
+                        self.fases += [fase_encontrada]
+
+                    fase_encontrada.partidos += [partido]
+
+        archivo.close()
+
+        return "Partidos cargados"
+    """
+    Nombre: guardar_ranking_goleadores
+    Entradas: No hay
+    Salidas: Mensaje que indica que el ranking fue guardado
+    Restricciones: Deben existir jugadores registrados
+    """
+    def guardar_ranking_goleadores(self):
+        jugadores = []
+
+        for seleccion in self.selecciones:
+            for jugador in seleccion.jugadores:
+                jugadores += [[jugador, seleccion]]
+
+        jugadores_ordenados = []
+        cantidad = self.contar_lista(jugadores)
+        contador = 0
+
+        while contador < cantidad:
+            mejor_jugador = None
+
+            for fila in jugadores:
+                if mejor_jugador == None:
+                    mejor_jugador = fila
+
+                elif fila[0].goles > mejor_jugador[0].goles:
+                    mejor_jugador = fila
+
+                elif fila[0].goles == mejor_jugador[0].goles:
+                    if fila[0].puntaje_individual > mejor_jugador[0].puntaje_individual:
+                       mejor_jugador = fila
+
+            jugadores_ordenados += [mejor_jugador]
+
+            lista_nueva = []
+
+            for fila in jugadores:
+                if fila != mejor_jugador:
+                    lista_nueva += [fila]
+
+            jugadores = lista_nueva
+            contador += 1
+
+        resultado = ""
+        posicion = 1
+
+        for fila in jugadores_ordenados:
+            jugador = fila[0]
+            seleccion = fila[1]
+
+            resultado += (f"{posicion};"
+                          f"{jugador.nombre};"
+                          f"{jugador.apellido};"
+                          f"{seleccion.codigo_equipo};"
+                          f"{jugador.goles};"
+                          f"{jugador.puntaje_individual}\n")
+
+            posicion += 1
+
+        archivo = open("ranking_goleadores.txt", "w")
+        archivo.write(resultado)
+        archivo.close()
+
+        return "Ranking de goleadores guardado"
     
 
 
