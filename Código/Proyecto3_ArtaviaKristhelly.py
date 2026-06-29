@@ -1250,3 +1250,103 @@ class Mundial():
         archivo.close()
 
         return "Países cargados"
+
+    """
+    Nombre: guardar_selecciones
+    Entradas: No hay
+    Salidas: Mensaje que confirma que las selecciones fueron guardadas
+    Restricciones: No hay
+    """
+    def guardar_selecciones(self):
+        resultado = ""
+
+        for seleccion in self.selecciones:
+
+            if seleccion.entrenador == None:
+                nombre_entrenador = "None"
+                apellido_entrenador = "None"
+                fecha_nacimiento = "None"
+                nacionalidad = "None"
+                licencia = "None"
+                experiencia = 0
+                sistema_juego = "None"
+
+            else:
+                nombre_entrenador = seleccion.entrenador.nombre
+                apellido_entrenador = seleccion.entrenador.apellido
+                fecha_nacimiento = seleccion.entrenador.fecha_nacimiento
+                nacionalidad = seleccion.entrenador.nacionalidad
+                licencia = seleccion.entrenador.licencia
+                experiencia = seleccion.entrenador.experiencia_anios
+                sistema_juego = seleccion.entrenador.sistema_juego
+
+            resultado += (f"{seleccion.codigo_equipo};"
+                          f"{seleccion.pais.codigo_fifa};"
+                          f"{nombre_entrenador};"
+                          f"{apellido_entrenador};"
+                          f"{fecha_nacimiento};"
+                          f"{nacionalidad};"
+                          f"{licencia};"
+                          f"{experiencia};"
+                          f"{sistema_juego};"
+                          f"{seleccion.fuerza_equipo}\n")
+
+        archivo = open("selecciones.txt", "w")
+        archivo.write(resultado)
+        archivo.close()
+
+        return "Selecciones guardadas"
+
+    """
+    Nombre: cargar_selecciones
+    Entradas: No hay
+    Salidas: Mensaje que confirma que las selecciones fueron cargadas
+    Restricciones: Los países deben cargarse antes
+    """
+    def cargar_selecciones(self):
+        try:
+            archivo = open("selecciones.txt", "r")
+        except FileNotFoundError:
+            return "El archivo selecciones.txt no existe"
+
+        self.selecciones = []
+
+        for linea in archivo:
+            linea = linea.strip()
+
+            if linea != "":
+                datos = linea.split(";")
+
+                pais_encontrado = None
+
+                for pais in self.paises:
+                    if pais.codigo_fifa == datos[1]:
+                        pais_encontrado = pais
+
+                if pais_encontrado == None:
+                    archivo.close()
+                    return "Error: No se encontró el país de la selección"
+
+                seleccion = Seleccion(datos[0], pais_encontrado)
+
+                if datos[2] != "None":
+                    entrenador = Entrenador(
+                        datos[2],
+                        datos[3],
+                        datos[4],
+                        datos[5],
+                        datos[6],
+                        int(datos[7]),
+                        datos[8])
+
+                    seleccion.asignar_entrenador(entrenador)
+
+                seleccion.fuerza_equipo = float(datos[9])
+
+                self.selecciones += [seleccion]
+
+        archivo.close()
+
+        return "Selecciones cargadas"
+
+
