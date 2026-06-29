@@ -846,7 +846,7 @@ class Grupo():
 """
 Nombre: class Fase
 Entradas:  
-Salidas:  
+Salidas: constructor, contar_partidos, registrar_juego,jugar_fase,mostrar_juegos,obtener_clasificados
 Restricciones:
 """
 class Fase:
@@ -858,10 +858,10 @@ class Fase:
         self.partidos = []
 
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
-    Restricciones:
+    Nombre: contar_partidos
+    Entradas: No hay 
+    Salidas: cuenta cuantos partidos hay 
+    Restricciones: No hay
     """
     def contar_partidos(self):
         contador = 0
@@ -872,9 +872,9 @@ class Fase:
         return contador
 
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: registrar_juego
+    Entradas:  equipo1,equipo2
+    Salidas:  Mensaje de que el partido se ha regsitrado
     Restricciones:
     """
     def registrar_juego(self, equipo1,equipo2):
@@ -894,9 +894,9 @@ class Fase:
         return "Partido registrado"
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre:jugar_fase 
+    Entradas: No hay 
+    Salidas: Mensaje de que la fase se jugo, en caso de empate, simula penales  
     Restricciones:
     """
     def jugar_fase(self):
@@ -920,10 +920,10 @@ class Fase:
         return "La fase se jugó"
 
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
-    Restricciones:
+    Nombre: mostrar_juegos
+    Entradas: No hay  
+    Salidas: resultado de todos los partidos de la fase  
+    Restricciones: 
     """
     def mostrar_juegos(self):
         resultado = f"Resultados de {self.nombre_fase}"
@@ -937,9 +937,9 @@ class Fase:
         return resultado
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: obtener_clasificados
+    Entradas: No hay 
+    Salidas: Retrona la lista de equipos ganadores que avanzan a la otra fase 
     Restricciones:
     """
     def obtener_clasificados(self):
@@ -959,7 +959,14 @@ class Fase:
                     clasificados += [partido.equipo_2]
 
         return clasificados
-
+   
+"""
+Nombre: class Mundial
+Entradas: 
+Salidas:  constructor,registrar_pais,registrar_seleccion,crear_grupos,contar_selecciones,jugar_fase_grupos,contar_lista,armar_fase_eliminatoria,jugar_fase_eliminatoria,
+determinar_campeon,mostrar_tabla_general,generar_reporte
+Restricciones:
+"""
 class Mundial():
     def __init__(self,nombre,anio):
         if not isinstance(nombre,str):
@@ -976,9 +983,9 @@ class Mundial():
         self.campeon = None
 
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: registrar_pais
+    Entradas:pais  
+    Salidas:  Mensaje de que se registro un pais
     Restricciones:
     """
     def registrar_pais(self,pais):
@@ -990,9 +997,9 @@ class Mundial():
         return "Se registró un país"
 
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: registrar_seleccion
+    Entradas:  seleccion
+    Salidas: Mensaje de que se registro una seleccion 
     Restricciones:
     """
     def registrar_seleccion(self, seleccion):
@@ -1004,10 +1011,10 @@ class Mundial():
         return "Se registró una selección"
 
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
-    Restricciones:
+    Nombre: crear_grupos
+    Entradas:  cantidad_grupos
+    Salidas:  Mensaje de que los grupos con los equipos se crearon correctamente 
+    Restricciones: cantidad_grupos debe ser int,cantidad_grupos debe ser mayor a 0 y debe haber minimo 1 seleccion registrada 
     """
     def crear_grupos(self,cantidad_grupos):
         if not isinstance(cantidad_grupos, int):
@@ -1041,9 +1048,9 @@ class Mundial():
         return "Grupos creados correctamente"
 
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: contar_selecciones
+    Entradas: No hay  
+    Salidas:  cantidad de cuantas selecciones hay
     Restricciones:
     """
     def contar_selecciones(self):
@@ -1055,9 +1062,9 @@ class Mundial():
         return contador
 
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: jugar_fase_grupos
+    Entradas:  No hay
+    Salidas:  Mensaje que confirma que se jugo la fase de grupos
     Restricciones:
     """
     def jugar_fase_grupos(self):
@@ -1068,9 +1075,9 @@ class Mundial():
 
 
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre:contar_lista 
+    Entradas:  lista
+    Salidas:  contador de elementos en una lista
     Restricciones:
     """
     def contar_lista(self, lista):
@@ -1082,9 +1089,10 @@ class Mundial():
         return contador
     
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: armar_fase_eliminatoria
+    Entradas:nombre_fase,clasificados
+    Salidas: una fase eliminatoria que organiza las selecciones clasificadas en parejas, registra un partido entre cada pareja,
+    guarda la fase en el Mundial y devuelve la fase creada.
     Restricciones:
     """
     def armar_fase_eliminatoria(self,nombre_fase,clasificados):
@@ -1102,9 +1110,9 @@ class Mundial():
         return fase
 
     """
-    Nombre: 
-    Entradas:  
-    Salidas:  
+    Nombre: jugar_fase_eliminatoria
+    Entradas:fase  
+    Salidas: Retorna los clasificados a la siguiente ronda 
     Restricciones:
     """
 
