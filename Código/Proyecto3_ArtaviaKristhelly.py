@@ -1349,4 +1349,86 @@ class Mundial():
 
         return "Selecciones cargadas"
 
+    """
+    Nombre: guardar_jugadores
+    Entradas: No hay
+    Salidas: Mensaje que indica que los jugadores fueron guardados
+    Restricciones: No hay
+    """
+    def guardar_jugadores(self):
+        resultado = ""
+
+        for seleccion in self.selecciones:
+            for jugador in seleccion.jugadores:
+                resultado += (f"{seleccion.codigo_equipo};"
+                              f"{jugador.nombre};"
+                              f"{jugador.apellido};"
+                              f"{jugador.fecha_nacimiento};"
+                              f"{jugador.nacionalidad};"
+                              f"{jugador.dorsal};"
+                              f"{jugador.posicion};"
+                              f"{jugador.total_tarjetas_amarillas};"
+                              f"{jugador.total_tarjetas_rojas};"
+                              f"{jugador.goles};"
+                              f"{jugador.asistencias};"
+                              f"{jugador.puntaje_individual}\n")
+
+        archivo = open("jugadores.txt", "w")
+        archivo.write(resultado)
+        archivo.close()
+
+        return "Jugadores guardados"
+
+    """
+    Nombre: cargar_jugadores
+    Entradas: No hay
+    Salidas: Mensaje que indica que los jugadores fueron cargados
+    Restricciones: Las selecciones deben cargarse primero
+    """
+    def cargar_jugadores(self):
+        try:
+            archivo = open("jugadores.txt", "r")
+        except FileNotFoundError:
+            return "El archivo jugadores.txt no existe"
+
+        for seleccion in self.selecciones:
+            seleccion.jugadores = []
+
+        for linea in archivo:
+            linea = linea.strip()
+
+            if linea != "":
+                datos = linea.split(";")
+
+                seleccion_encontrada = None
+
+                for seleccion in self.selecciones:
+                    if seleccion.codigo_equipo == datos[0]:
+                        seleccion_encontrada = seleccion
+
+                if seleccion_encontrada == None:
+                    archivo.close()
+                    return "Error: No se encontró la selección del jugador"
+
+                jugador = Futbolista(
+                    datos[1],
+                    datos[2],
+                    datos[3],
+                    datos[4],
+                    int(datos[5]),
+                    datos[6],
+                    int(datos[7]),
+                    int(datos[8]),
+                    int(datos[9]),
+                    int(datos[10]),
+                    int(datos[11]))
+
+                seleccion_encontrada.agregar_jugador(jugador)
+
+        archivo.close()
+
+        return "Jugadores cargados"
+
+    
+
 
