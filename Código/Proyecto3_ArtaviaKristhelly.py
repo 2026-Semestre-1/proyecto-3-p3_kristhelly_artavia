@@ -627,7 +627,7 @@ class Partido:
             self.goles_equipo1 = random.randint(0,4)
             self.goles_equipo2 = random.randint(0,4)
 
-    
+        
     """
     Nombre: generar_ganador
     Entradas: No hay 
@@ -652,7 +652,7 @@ class Partido:
     def mostrar_resultado(self):
         return f"{self.equipo_1.pais.nombre} {self.goles_equipo1} - {self.goles_equipo2} {self.equipo_2.pais.nombre}"
 
- """
+"""
 Nombre: class Grupo
 Entradas:No hay
 Salidas:  métodos contar_equipos,agregar_equipo,jugar_partidos,calcular_tabla,obtener_clasificados,mostrar_tabla
@@ -1200,21 +1200,53 @@ class Mundial():
 
         return "Reporte generado"
 
-        
+###### ARCHIVOS TXT
 
-            
+    """
+    Nombre: guardar_paises
+    Entradas: No hay
+    Salidas: Mensaje que indica que los países se guardaron
+    Restricciones: No hay
+    """
+    def guardar_paises(self):
+        resultado = ""
 
+        for pais in self.paises:
+            resultado += (f"{pais.codigo_fifa};"
+                          f"{pais.nombre};"
+                          f"{pais.continente};"
+                          f"{pais.ranking_fifa}\n")
 
-        
-        
-        
+        archivo = open("paises.txt", "w")
+        archivo.write(resultado)
+        archivo.close()
 
-        
-        
-        
-            
-        
+        return "Países guardados"
 
-    
+    """
+    Nombre: cargar_paises
+    Entradas: No hay
+    Salidas: Mensaje que indica que lo países
+    Restricciones: No hay
+    """
+    def cargar_paises(self):
+        try:
+            archivo = open("paises.txt", "r")
+        except FileNotFoundError:
+            return "El archivo paises.txt no existe"
 
-  
+        self.paises = []
+
+        for linea in archivo:
+            linea = linea.strip()
+
+            if linea != "":
+                datos = linea.split(";")
+
+                pais = Pais(datos[0],datos[1],datos[2],int(datos[3]))
+
+                self.paises += [pais]
+
+        archivo.close()
+
+        return "Países cargados"
