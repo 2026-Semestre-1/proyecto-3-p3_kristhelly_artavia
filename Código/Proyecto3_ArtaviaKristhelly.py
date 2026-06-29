@@ -1591,7 +1591,7 @@ class Mundial():
 
                 elif fila[0].goles == mejor_jugador[0].goles:
                     if fila[0].puntaje_individual > mejor_jugador[0].puntaje_individual:
-                       mejor_jugador = fila
+                        mejor_jugador = fila
 
             jugadores_ordenados += [mejor_jugador]
 
@@ -1625,6 +1625,141 @@ class Mundial():
         archivo.close()
 
         return "Ranking de goleadores guardado"
+
+    """
+    Nombre: cargar_ranking_goleadores
+    Entradas: No hay
+    Salidas: Lista con el ranking de goleadores
+    Restricciones: Debe existir el archivo ranking_goleadores.txt
+    """
+    def cargar_ranking_goleadores(self):
+        try:
+            archivo = open("ranking_goleadores.txt", "r")
+        except FileNotFoundError:
+            return "El archivo ranking_goleadores.txt no existe"
+
+        ranking = []
+
+        for linea in archivo:
+            linea = linea.strip()
+
+            if linea != "":
+                datos = linea.split(";")
+
+                fila = [int(datos[0]),
+                    datos[1],
+                    datos[2],
+                    datos[3],
+                    int(datos[4]),
+                    int(datos[5])]
+
+                ranking += [fila]
+
+        archivo.close()
+
+        return ranking
+
+    """
+    Nombre: guardar_ranking_selecciones
+    Entradas: No hay
+    Salidas: Mensaje que indica que el ranking fue guardado
+    Restricciones: 
+    """
+    def guardar_ranking_selecciones(self):
+        selecciones = []
+
+        for grupo in self.grupos:
+            tabla = grupo.calcular_tabla()
+
+            for fila in tabla:
+                seleccion = fila[1]
+                puntos = fila[2]
+                diferencia = fila[5]
+
+                selecciones += [[seleccion, puntos, diferencia]]
+
+        selecciones_ordenadas = []
+        cantidad = self.contar_lista(selecciones)
+        contador = 0
+
+        while contador < cantidad:
+            mejor_seleccion = None
+
+            for fila in selecciones:
+                if mejor_seleccion == None:
+                    mejor_seleccion = fila
+
+                elif fila[1] > mejor_seleccion[1]:
+                    mejor_seleccion = fila
+
+                elif fila[1] == mejor_seleccion[1]:
+                    if fila[2] > mejor_seleccion[2]:
+                        mejor_seleccion = fila
+
+            selecciones_ordenadas += [mejor_seleccion]
+
+            lista_nueva = []
+
+            for fila in selecciones:
+                if fila != mejor_seleccion:
+                    lista_nueva += [fila]
+
+            selecciones = lista_nueva
+            contador += 1
+
+        resultado = ""
+        posicion = 1
+
+        for fila in selecciones_ordenadas:
+            seleccion = fila[0]
+            puntos = fila[1]
+            diferencia = fila[2]
+
+            resultado += (f"{posicion};"
+                          f"{seleccion.codigo_equipo};"
+                          f"{seleccion.pais.nombre};"
+                          f"{puntos};"
+                          f"{diferencia}\n")
+
+            posicion += 1
+
+        archivo = open("ranking_selecciones.txt", "w")
+        archivo.write(resultado)
+        archivo.close()
+
+        return "Ranking de selecciones guardado"
+
+    """
+    Nombre: cargar_ranking_selecciones
+    Entradas: No hay
+    Salidas: Lista con el ranking de selecciones
+    Restricciones: 
+    """
+    def cargar_ranking_selecciones(self):
+        try:
+            archivo = open("ranking_selecciones.txt", "r")
+        except FileNotFoundError:
+            return "El archivo ranking_selecciones.txt no existe"
+
+        ranking = []
+
+        for linea in archivo:
+            linea = linea.strip()
+
+            if linea != "":
+                datos = linea.split(";")
+
+                fila = [int(datos[0]),
+                datos[1],
+                datos[2],
+                int(datos[3]),
+                int(datos[4])]
+
+                ranking += [fila]
+
+        archivo.close()
+
+        return ranking
     
 
 
