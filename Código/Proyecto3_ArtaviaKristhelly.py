@@ -1,5 +1,6 @@
 import random
 
+
 """
 Nombre: class Pais
 Entradas: codigo_fifa,nombre,continente,ranking_fifa 
@@ -1760,6 +1761,3 @@ class Mundial():
         archivo.close()
 
         return ranking
-    
-
-
